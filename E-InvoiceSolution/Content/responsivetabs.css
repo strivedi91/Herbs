@@ -1,0 +1,182 @@
+ul.resp-tabs-list {	padding:0px; margin:0px; }
+.common-formbox.tab-box{ border:1px solid #8c7f70; }
+.resp-tabs-list li{
+    font-size:15px;
+    display:inline-block;
+    padding:9px 10px;
+    margin:0;
+	background-color:#3f7ea6;
+	color:#ffffff;
+    list-style: none;
+    cursor:pointer;
+    float:left;
+	border-width:1px 1px 0;
+	margin-right:3px;
+	position:relative;
+	z-index:9;
+}
+.resp-tabs-list li:hover{
+	 background-color:#ffffff;
+	color:#666666;
+}
+
+.resp-tabs-container {
+    padding:0px;
+    background-color:#fff;
+    clear:left;
+}
+h2.resp-accordion {
+    cursor:pointer;
+    padding:5px;
+    display:none;
+	font-size: 13px;
+    border: 1px solid #c1c1c1;
+    border-top: 0px solid #c1c1c1;
+    margin: 0px;
+    padding: 0px 10px;
+}
+.resp-tab-content{ display:none; }
+.resp-tab-item.resp-tab-active,
+.resp-tab-item.resp-tab-active:hover{
+    border-bottom: none;
+    background-color:#ffffff;
+	color:#666666;
+}
+
+.resp-content-active, .resp-accordion-active { display: block; }
+.resp-tab-content {
+    background-color:#ffffff;
+}
+h2.resp-tab-active {
+    border-bottom: 0px solid #c1c1c1 !important;
+    margin-bottom: 0px !important;
+    padding: 0px 10px !important;
+}
+h2.resp-tab-title:last-child {
+    border-bottom: 12px solid #c1c1c1 !important;
+    background: blue;
+}
+/*-----------Vertical tabs-----------*/
+.resp-vtabs ul.resp-tabs-list {
+    float: left;
+    width: 18%;
+}
+.resp-vtabs .resp-tabs-list li {
+    display: block;
+    padding: 15px 15px !important;
+    margin: 0;
+    cursor: pointer;
+    float: none;
+}
+.resp-vtabs .resp-tabs-container {
+    padding: 0px;
+    background-color: #fff;
+    border: 1px solid #c1c1c1;
+    float: left;
+    width: 82%;
+    min-height:150px;
+    border-radius: 4px;
+    clear: none;
+}
+.resp-vtabs .resp-tab-content{  padding:10px; }
+.resp-vtabs li.resp-tab-active {
+    border: 1px solid #c1c1c1;
+    border-right: none;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    margin-right: -1px !important;
+    padding: 14px 15px 15px 14px !important;
+}
+.resp-arrow {
+    width: 5px;
+    height:5px;
+    float: right;
+    margin-top: 5px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 8px solid #006A93;
+}
+
+h2.resp-tab-active span.resp-arrow {
+   	border: none;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid #006A93;
+	
+}
+/*-----------Accordion styles-----------*/
+.resp-easy-accordion .resp-tab-content { border: 1px solid #c1c1c1; }
+.resp-jfit{ width: 100%; margin: 0px; }
+.resp-tab-content-active { display: block; }
+.imgleft{float:left; display:inline-block; margin:5px 10px 5px 0px; max-width:100%;}
+/* Tab View End */
+/* Dashboard tabs */
+#recently-add .resp-tab-item.resp-tab-active,
+#recently-add .resp-tab-item.resp-tab-active:hover{
+    border-bottom: none;
+    background-color:#db731a;
+	padding:5px 7px;
+	color:#ffffff;
+}
+
+#recently-add .resp-tabs-list li { background-color:#efeeee; color:#666666; padding:5px 7px;}
+#recently-add .resp-tabs-list li:hover{
+	 background-color:#db731a;
+	 color:#ffffff;
+}
+#recently-booked .resp-tab-item.resp-tab-active,
+#recently-booked .resp-tab-item.resp-tab-active:hover{
+    border-bottom: none;
+    background-color:#db731a;
+	padding:5px 7px;
+	color:#ffffff;
+}
+#recently-booked .resp-tabs-list li { background-color:#efeeee; color:#666666; padding:5px 7px;}
+#recently-booked .resp-tabs-list li:hover{
+	 background-color:#db731a;
+	 color:#ffffff;
+}
+#searched-result .resp-tab-item.resp-tab-active {
+    border-bottom: none;
+    background-color:#3f7ea6;
+	padding:5px 7px;
+	color:#ffffff;
+}
+#searched-result .resp-tabs-list li { background-color:#efeeee; color:#666666; padding:5px 7px;}
+#searched-result .resp-tab-item.resp-tab-active {
+    border-bottom: none;
+    background-color:#3f7ea6;
+	padding:5px 7px;
+	color:#ffffff;
+}
+#searched-result .resp-tabs-list li:hover{
+	 background-color:#337ab7;
+	 color:#ffffff;
+}
+#category-tab { background-color:#023059; padding:10px; margin-bottom:10px !important;}
+/*Here your can change the breakpoint to set the accordion, when screen resolution changed*/
+@media (max-width: 768px) {
+    ul.resp-tabs-list { display: none;  }
+	.resp-vtabs .resp-tabs-container {
+        border: none;
+        float: none;
+        width: 100%;
+        min-height:50px;
+        clear: none;
+    }
+    .resp-accordion-closed { display:none !important; }
+    .resp-vtabs .resp-tab-content:last-child {
+        border-bottom: 1px solid #c1c1c1 !important;
+    }
+	.resp-vtabs .resp-tabs-container{ min-height:200px;}
+	h2.resp-accordion{
+		display: block; 
+		background-color:#EEF4F7 !important; 
+		border:1px solid #CADFE8 !important; 
+		padding:10px !important; 
+		margin:0px 0px 10px; 
+		color:#006A93;
+		font-weight:bold;
+	}
+}

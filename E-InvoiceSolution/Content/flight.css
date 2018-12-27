@@ -1,0 +1,303 @@
+.direct-flight{ margin-top:30px; }
+.btn-group-flight{ position:relative;}
+.btn-group-flight .glyphicon-plus{
+	float:right;
+	margin-top:5px;
+	font-size:20px;	
+}
+.filter-btn{ 
+	padding:10px 10px 10px 50px;
+	background-color:#eef4f7;
+	border:1px solid #cadfe8;
+	display:block;
+	position:relative;
+}
+
+.filter-btn:hover, .filter-btn:focus{ box-shadow:inset 0 0 7px rgba(66, 139, 202, 0.4); }
+.filter-btn .glyphicon{
+	position:absolute;
+	left:13px;
+	top:17px;
+	font-size:25px;
+}
+.filter-btn .filterbox-hd{
+	font-weight:bold;
+	display:block;
+	margin-bottom:5px;
+}
+.round-trip{ margin-top:20px; }
+.search-data{ background-color:#ffffff; padding:10px 10px 0px 10px; }
+.search-data .control-label{ text-align:left; }
+.edit-search{ display:none; }
+.flight-time .time-min{ float:left; }
+.flight-time .time-max{ float:right; }
+.btn-group-compare{ margin-top:10px; text-align:right;}
+.compare-flight{ font-size:15px; line-height:17px; }
+/*Compare-Flight Part*/
+.compare-flight-info{ display:none; }
+.compare-flight-info2{ display:block; }
+.compare-flight-info .stops{ 
+	width:100px;
+	background-color:#006a93;
+	float:left;
+	border:1px solid #dcd9d9;
+	border-bottom:0px;
+}
+.compare-flight-info .lowest{ background-color:#ffffff; border-left:0px; text-align:center; }
+.compare-flight-info .stops.lowest table td{ padding-left:0px; color:#666666; }
+.compare-flight-info .stops.lowest table td.first{ color:#006a93; }
+.compare-flight-info .stops table td.first{ height:70px; }
+.compare-flight-info .stops table td{
+	height:40px;
+	padding-left:10px;
+	border-bottom:1px solid #dcd9d9;
+	color:#ffffff;	
+}
+.airlines-info ul{ height:191px !important; }
+.airlines-info li{ 
+	border:1px solid #dcd9d9;
+	border-width:1px 1px 1px 0px;
+	margin-bottom:5px;		
+}
+.airlines-info table td.first{ height:70px; }
+.airlines-info table td{
+	height:40px;
+	border-bottom:1px solid #dcd9d9;
+	text-align:center;	
+}
+/* Button and Icon CSS */
+.icon-flight{ text-align:center; margin-bottom:5px; min-height:23px; }
+.icon-airlines{ background:url(../images/icon-other.png) no-repeat; width:60px; display:inline-block;}
+.airofloat{ background-position:-4px -405px;	height:17px; }
+.egyptair {	height:13px; background-position:-138px -354px;	}
+.austrian{ height:23px; background-position:-71px -355px; }
+.british-airways{ height:9px; background-position:-73px -381px; }
+.qatar-airways{ height:18px; background-position:-73px -395px; }
+.american-airlines{ height:10px; background-position:-4px -372px; }
+.emirates{ height:15px; background-position:-138px -370px; }
+.jet-airways{ height:11px; background-position:-4px -391px; }
+.air-france{ height:5px; background-position:-142px -393px; }
+.air-india{ height:16px; background-position:-1px -351px; }
+/* Listing Control */
+.airline-name{ 
+	display:inline-block;
+	color:#006a93;
+	vertical-align:middle;
+	margin-right:10px;
+	font-size:10px;
+	min-width:85px;
+}
+.flight-depart{ border-bottom:1px solid #d6d6d6; padding-bottom:15px; }
+.flight-return{ border-bottom:1px solid #d6d6d6; padding-bottom:15px; }
+.flight-detail .depart-txt{ color:#006a93; font-weight:bold; vertical-align:middle; }
+.airline-name img{ margin-bottom:5px; display:block; }
+.flight-detail .start-point{ display:inline-block;  vertical-align:middle; min-width:200px; }
+.start-point .depart{ margin-left:5px; }
+.dir-arrow:before{ 
+	content: "\f0da";
+  	font-family: 'FontAwesome';
+	cursor:n
+}
+.dir-arrow{
+	font-size:15px;
+	line-height:17px;
+	color:#666666;	
+}
+.stops-status{ 
+	background-color:#56a1c3;
+	height:10px;
+	width:100%;
+	margin-left:5px;
+	margin-top:3px;
+	position:relative;
+}
+.stops-status a{ 
+	position:absolute;
+	width:15%;
+	height:100%;
+	background-color:#e2e2e2;
+	left:40%;
+}
+.flight-detail .end-point{ display:inline-block; vertical-align:top; margin:5px 0px 0px 50px; }
+.flight-detail .total-time{ margin-left:20px; color:#999999; }
+.flight-detail .arrival-place{ min-width:120px; display:inline-block; }
+.flight-detail .depart-place{ min-width:120px; display:inline-block; }
+.total-amount{ text-align:right; }
+.total-amount .price{ 
+	color:#e01515;
+	font-size:20px;
+	line-height:22px;
+	font-family: 'open_sanssemibold';
+	margin-bottom:5px;
+	display:block;
+}
+.total-amount .price-person{ color:#666666; font-size:12px; line-height:14px; margin-bottom:5px; display:block; }
+.more-detail .lnk-detail{ 
+	display:inline-block;
+	margin-right:10px;
+	font-weight:bold;
+	color:#006a93;	
+}
+.more-detail .lnk-detail:hover{ color:#f28b0e; }
+.more-data{ display:none; }
+.extra-facility{ display:inline-block; margin-left:30px; }
+.extra-facility div{ color:#999999; line-height:15px; margin-right:20px; padding-left:20px; position:relative; display:inline-block; }
+.extra-facility span { 
+	font-family: 'FontAwesome';
+	margin-right:5px;
+	font-size:15px;
+	line-height:15px;
+	display:inline-block;
+	position:absolute;
+	top:0px;
+	left:0px;	
+}
+.extra-facility .seat span{ 
+	background:url(../images/icon-other.png) no-repeat;
+	background-position:-6px -50px;
+	width:14px;
+	height:19px;
+	top:-3px;
+}
+.extra-facility .tv span:before{ content: "\f025"; } 
+.extra-facility .wifi span{ 
+	background:url(../images/icon-other.png) no-repeat;
+	background-position:-23px -51px;
+	height:13px;
+	width:15px;
+	left:-2px;		
+}
+.extra-facility .power span:before{ content: "\f011"; }
+/* More Data Part */
+.flight-detail{ font-size:12px; }
+.flight-detail .hd-more-data{ 
+	background-color:#e3e5e3;
+	padding:5px 10px;
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	color:#666666;	
+}
+.flight-detail .hd-more-data span{
+	font-weight:bold;
+	font-size:12px;
+	min-width:175px;
+	display:inline-block;
+}
+.flight-detail .total-time2{ text-align:right; float:right; }
+.flight-detail .depart-arrive span{ display:block; }
+.flight-detail .more-data .depart-time{ text-align:right; }
+.flight-detail .economy li{
+	font-size:10px;
+	color:#999999;
+	display:inline-block;	
+}
+.flight-detail .hd-more-data2{ margin-top:10px; border:0px; background-color:#fedfe2; }
+.flight-detail .extra-facility2{ border-top:1px solid #e7e7e7; margin-top:10px; padding-top:5px;  }
+.flight-detail .extra-facility2 .extra-facility{ margin-left:0px; margin-top:10px; }
+.info-buynow{ border-top:1px solid #e7e7e7; margin-top:5px; padding-top:10px; }
+.info-buynow span{ font-size:13px; display:inline-block; margin-top:7px;}
+.info-buynow .btn-typ1{ float:right; }
+.date-lbl{ display:block; }
+.flight-detail .economy{ margin:0px; padding:0px; }
+.flight-list{  display:none;  }
+.flight-listing{ display:none; }
+/* New CSS for Alignment */
+.flight-detail .hd-more-data{ padding:5px 0px; }
+.flight-detail .hd-more-data .hd-depart{
+	width:16.6667%;
+	padding-left: 10px;
+    padding-right: 15px;
+	float:left;
+	min-width:1px;
+}
+.flight-detail .hd-more-data .hd-depart-date{
+	width:25%;
+	padding-left: 12px;
+    padding-right: 15px;
+	float:left;
+}
+.flight-detail .hd-more-data .hd-root{
+	width:33.3333%;
+	padding-left: 13px;
+    padding-right: 15px;
+	float:left;
+}
+.flight-detail .hd-more-data .hd-total-time{ 
+	text-align:right;
+	padding-right:10px;
+	width:25%;
+	float:left;
+}
+.flight-detail .hd-more-data2 .hd-depart{ 
+	width:16.6667%;
+	padding-left: 10px;
+    padding-right: 15px;
+	float:left;
+	min-width:1px;
+}
+.flight-detail .hd-more-data2 .hd-hold{ 
+	width:50%;
+	padding-left: 5px;
+    padding-right: 15px;
+	float:left;
+}
+.flight-detail .hd-more-data2 .hd-hold-hour{
+	width:33.3333%;
+	text-align:right;
+	padding-right:10px;
+}
+.flight-detail .gray.hd-more-data2{ background-color:#e3e5e3; }
+.flight-detail .gray.hd-more-data2 .hd-hold{ padding-left:10px; }
+@media (max-width: 1200px){
+.filter-btn.first, .filter-btn.second{ margin-bottom:10px; }
+.flight-detail .end-point{ margin-left:104px; }
+.flight-detail .hd-more-data span{ min-width:160px; }
+.flight-detail .hd-more-data .hd-depart{ width:16.6667%; }
+.flight-detail .hd-more-data .hd-depart-date{ width:25%; }
+.flight-detail .hd-more-data .hd-root{ width:33.3333%; }
+.flight-detail .hd-more-data .hd-total-time{ width:25%; } 
+}
+@media (min-width:768px) and (max-width:991px){
+.extra-facility div{ margin-right:10px; }
+.flight-detail .hd-more-data span{ min-width:110px; }	
+}
+@media (max-width: 979px){
+.direct-flight{ margin-top:0px; }
+.btn-group-flight{ margin-top:0px; }
+.filter-btn{ margin-bottom:10px; }
+.search-data .control-label{ text-align:left; }
+.total-amount .price{ display:inline-block; margin-right:5px; }		
+.total-amount{ margin-top:10px; }
+}
+@media (max-width: 767px){
+.round-trip{ margin-top:5px; }
+.flight-detail .hd-more-data span{ min-width:89px; }
+}
+@media (max-width:480px){
+.extra-facility div{ width:50%; margin-right:0px; display:inline-block; float:left; margin-bottom:10px; }
+.flight-detail .hd-more-data span{ width:49%; vertical-align:top; margin-bottom:3px; }
+.flight-detail .total-time2{ text-align:left; float:none; }	
+.more-detail{ position:relative; }
+.more-detail .lnk-detail{
+	position:absolute;
+	left:0px;
+	top:73px;
+	z-index:2;
+}
+.more-detail .extra-facility{ margin-left:0px; }
+.flight-detail .end-point, .start-point .depart, .stops-status{ margin-left:0px; }
+.flight-detail .start-point{ margin-top:5px; }
+.info-buynow span{ margin-bottom:5px; }
+.depart-arrive{ width:50%; margin:0px; }
+.depart-time, .airlines{ width:100%; }
+.airlines{ margin-bottom:5px; }
+.flight-detail .more-data .depart-time{ text-align:left; }
+.flight-detail .depart-arrive span{ margin-bottom:5px; }
+.airlines .airline-name{ padding-bottom:5px; border-bottom:1px solid #e7e7e7; width:100%; }
+.total-amount .price-person{ display:block; }
+.flight-detail .hd-more-data .hd-depart{ width:65%; }
+.flight-detail .hd-more-data .hd-depart-date{ width:35%; padding-left:0px }
+.flight-detail .hd-more-data .hd-root{ width:65%; padding-left:10px; }
+.flight-detail .hd-more-data .hd-total-time{ width:35%; text-align:left; }
+.flight-detail .hd-more-data2 .hd-hold{ width:100%; padding-left: 10px; }
+}

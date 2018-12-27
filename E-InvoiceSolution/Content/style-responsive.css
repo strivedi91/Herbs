@@ -1,0 +1,181 @@
+#amenities .modal-dialog { width:70%; }
+@media (max-width:1200px){
+	.pagination-new .page-navigate-left{ text-align:center; }
+	.pagination-new .page-navigate-middle{ text-align:center; margin:10px 0px; }
+	.pagination-new .page-navigate{ text-align:center; }
+}
+@media (min-width:980px) and (max-width:1199px){
+	#amenities .modal-dialog { width:80%; }
+	.pay-logo{ margin-left:0px; margin-top:10px; }
+}
+@media (min-width:768px) and (max-width:979px){
+	#amenities .modal-dialog { width:90%; }
+}
+@media (max-width: 979px){
+	.page-content {
+		margin: 0px !important;
+		min-height: 280px;
+		padding: 15px !important;
+	}
+	.page-sidebar { float:none;	}
+	.navbar-fixed-top, 
+	.navbar-fixed-bottom{ position:relative; }
+	.page-container{ margin-top:0px; }
+	body { background-color: #ffffff !important; }
+	/**************************
+	* Vertical Tabs CSS
+	**************************/
+	.ver-tabs-typ1 .col-sm-3 { padding-right:0px; }
+	/*.ver-tabs-typ1 .col-sm-9 { padding-right:0px; }*/
+	.ver-tabs-typ1 .nav-tabs li a {
+		padding:10px 5px 0 43px;
+	}
+}
+@media (min-width: 780px){
+	.page-sidebar {
+		position: absolute;
+		width: 225px;
+	}
+	.page-content {
+		margin-left: 225px;
+		margin-top: 0px;
+		min-height: 600px;
+	}
+	
+}
+@media (max-width: 767px){
+	.publishbtn { text-align:left; }
+	#amenities .modal-dialog { width:auto; }
+	.page-content {	padding: 15px !important;}
+	.header .navbar-inner .container-fluid, .header .navbar-inner .container {
+		margin-left: 10px !important;
+		margin-right: 10px !important;
+		padding:0px;
+	}
+	.navbar-nav .open .dropdown-menu {
+		position: static;
+		float: left;
+		width: auto;
+		margin-top: 2px;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	}
+	.search-text{ text-align:left; }
+	.notification{ 	margin-right:-50px; }
+	.search-btn{ margin-top:10px; }
+	/**************************
+	* Vertical Tabs CSS
+	**************************/
+	.ver-tabs-typ1 .col-sm-3 { padding-right:15px; }
+	.ver-tabs-typ1 .nav-tabs { margin-bottom:15px; }
+	.ver-tabs-typ1 .nav-tabs li .tab-arrow,
+	.ver-tabs-typ1 .nav-tabs li.active .tab-arrow { display:none; }
+	.search-option .col-sm-3 { margin-bottom:10px; }
+
+	.hor-tabs-typ1 .nav > li > a{ padding:9px 15px 11px; }
+	.hor-tabs-typ1 .nav-tabs li.active a,
+	.hor-tabs-typ1 .nav-tabs li.active a:hover  {
+		padding:7px 15px 11px !important;
+	}
+	.hor-tabs-typ1 .nav-tabs > li { margin-bottom:-3px; }
+	.pagi-nation  .page-navigate{ text-align:center; margin-top:15px; }
+	.pagi-nation  .page-navigate-left{ text-align:center; }
+	.pagi-nation{ padding:10px 0px; }
+	.icon-topbar{ text-align:left; margin-bottom:10px; }
+	/****************************
+	* Top Page Content CSS
+	****************************/
+	.page-top-right{ text-align:left; position:inherit; top:inherit; right:inherit; }
+	.page-top-left { position:inherit; top:inherit; left:inherit; }
+	.page-top { position:inherit; }
+    .search-btn-left{ margin-bottom:10px; }
+	.usergroup-dropdown{ width:100%; }
+	.icon-topbar{ text-align:left; margin-bottom:20px; }
+	.candidate  .candi-acadamic{ text-align:left; }
+	
+	
+	/*
+	####################
+		New changes
+	####################
+	*/
+	.form-horizontal .control-label,
+	 label { margin-bottom:5px;}
+	.top-control .back_btn { text-align:left; margin-bottom:10px;}
+	.alert-warning .txt { text-align:left;}
+	.txt .pax-child,
+	.child { margin-left:0px; margin-top:5px;}
+	.txt .pax-count { display:block; margin-bottom:5px;}
+	.asc-desc { margin-top:10px; margin-bottom:10px;}
+	.asc-desc .dis_inline-block { display: inline-block;}
+	.check-box-mobgrid { padding-top:0px !important;}
+	.search-text .btn-primary	 { margin-top:10px; margin-left:0px;}
+	.pay-logo { margin:10px 0px 0px 0px;}
+	.drop-admin { width: auto !important; display:inline-block !important;}
+	.expiry-date{ margin-bottom:10px; }
+	
+}
+@media (max-width: 480px){
+	.hidden-480{ display:none !important; }
+	.page-number{ display:block; margin:10px 0px; }
+	.multiple-dropdown .control-label{ width:100% !important; }
+	.multiple-dropdown .multiple-select{ width:100% !important; }
+	.multiple-dropdown .control-label{ width:100% !important; }
+	.page-top-right .btn-top-last{ margin-top:10px; }
+
+	
+	/* New Changes */
+	/*
+	###############
+	  Top header
+	###############
+	*/
+	.navbar-default .navbar-brand { font-size:23px; display:inline-block; text-align:center;}
+	
+	.navbar .pull-right>li>.dropdown-menu, .navbar .nav>li>.dropdown-menu.pull-right {
+		position: absolute;
+		float: left;
+		width: auto;
+		margin-top: 2px;
+		border: 1px solid rgba(0, 0, 0, 0.15);
+		-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+		background-color: #ffffff;
+	}
+	.navbar .pull-right>li>.dropdown-menu, .navbar .nav>li>.dropdown-menu.pull-right {
+		right:inherit;
+	}
+	.dropdown-menu li a:hover, 
+	.dropdown-menu li a:focus {
+		color: #262626;
+		text-decoration: none;
+		background-color: #f5f5f5 !important;
+	}
+	/*
+	#####################
+	 	all box typ
+	####################
+	*/
+	.box-hd-typ1, 
+	.box-hd-typ2, 
+	.box-hd-typ3, 
+	.box-hd-typ4, 
+	.box-hd-typ5, 
+	.box-hd-typ6, 
+	.box-hd-typ7, 
+	.box-hd-typ8 { font-size:14px !important; font-weight:700;}
+	
+	/*
+	 all edit delete btn
+	*/
+	.add_edit-btn { margin-right:0px; margin-bottom:5px;}
+	.top-control .back_btn { text-align:left; margin-bottom:10px;}
+	.mob_block{ display:block; margin:10px 0px;}
+	.div_block{ display:block; margin:10px 0px;}
+	.search-text .btn-primary	 { margin-top:10px; margin-left:0px;}
+	.check-box-mobgrid { padding-top:0px !important;}
+	.booking-code { text-align:left;}
+	.booking-code .btn-success { margin:0px 0px 10px 0px;}
+	.form-horizontal .checkbox-inline{ margin-left:0px; margin-right:10px; display:block; }
+}

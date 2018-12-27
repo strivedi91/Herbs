@@ -1,0 +1,1190 @@
+body
+{
+    background-color: #3f7ea6 !important;
+    font-family: 'open_sansregular';
+    font-size: 13px;
+}
+
+h1, .h1, h2, .h2, h3, .h3
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+a:hover, a:focus
+{
+    text-decoration: none;
+}
+/*==================
+Modal Css
+====================*/
+.modal-open
+{
+    overflow: inherit;
+}
+
+.modal
+{
+    z-index: 99999 !important;
+    overflow-y: inherit;
+}
+
+.modal-dialog
+{
+    margin: 80px auto 20px;
+}
+
+.modal-header .close
+{
+    margin-top: 5px;
+}
+
+.modal-content
+{
+    border: 7px solid #333333;
+}
+
+.modal-body, .modal-footer
+{
+    padding: 15px;
+}
+
+.modal-footer
+{
+    margin-top: 0px;
+}
+
+.modal-content .shared-document
+{
+    max-height: 350px;
+    overflow-y: scroll;
+}
+/*==================
+Topbar Header Css
+====================*/
+.container-fluid
+{
+    margin-right: 5px;
+}
+
+.collapse
+{
+    display: block;
+}
+
+.navbar-inner
+{
+    padding: 5px 0px 0px;
+}
+
+.navbar-fixed-top, .navbar-fixed-bottom
+{
+    z-index: 999;
+}
+
+.navbar-collapse
+{
+    border-top: 0px;
+    border-color: none;
+    box-shadow: none;
+    padding: 0px;
+}
+
+.navbar-default .navbar-brand
+{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
+{
+    color: #ffffff;
+}
+
+.navbar-brand
+{
+    padding: 10px 0px;
+}
+
+.navbar
+{
+    border: 0px;
+    margin-bottom: 0px;
+    min-height: 55px;
+    background: #023059;
+}
+
+.navbar .nav
+{
+    margin: 0px;
+}
+
+.navbar .nav > li
+{
+    float: left;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+    color: #ffffff;
+    padding: 10px 15px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
+{
+    background: #bf5e0a;
+    color: #ffffff;
+}
+
+.navbar-default .navbar-toggle
+{
+    background: #000000;
+    border: 0px;
+    border-radius: 0px;
+    margin: 0px 0px 0px 10px;
+    padding: 13px 10px;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus
+{
+    background: #000000;
+}
+
+.dropdown-menu
+{
+    border-radius: 0px;
+}
+
+.dropdown-menu > li > a
+{
+    padding: 5px 15px;
+}
+
+.navbar .pull-right > li > .dropdown-menu, .navbar .nav > li > .dropdown-menu.pull-right
+{
+    right: -1px;
+    left: inherit;
+    top: 39px;
+}
+
+.header .collapse
+{
+    display: block;
+    margin: 0px;
+}
+
+.header .nav > li.dropdown .dropdown-toggle .badge
+{
+    position: absolute;
+    font-size: 11px !important;
+    font-weight: 300;
+    top: 2px;
+    right: 20px;
+    text-align: center;
+    height: 18px;
+    background-color: #E02222;
+    padding: 4px 6px 4px 6px;
+    border-radius: 50%;
+}
+
+.top-control
+{
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.icon-topbar .icon-top span
+{
+    font-size: 12px;
+    line-height: 1;
+    display: block;
+    margin: auto;
+}
+
+.icon-topbar
+{
+    vertical-align: middle;
+}
+
+.icon-topbar .icon-top
+{
+    display: inline-block;
+    color: inherit;
+    border-left: 1px solid #d6d6d6;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.icon-topbar .icon-top.last
+{
+    border-right: 1px solid #d6d6d6;
+}
+/*==================
+Page Header and Page Path Css
+====================*/
+.page-header
+{
+    margin: -2px 0px 5px;
+    padding: 0px;
+    font-family: 'open_sanslight';
+    border: 0px;
+    color: #666666;
+    font-size: 22px;
+    line-height: 24px;
+}
+
+.breadcrumb
+{
+    background-color: inherit;
+    border-radius: 0px;
+    color: #424242;
+    margin-bottom: 10px;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.breadcrumb a
+{
+    color: #666666;
+    display: inline-block;
+}
+
+.breadcrumb a:hover
+{
+    color: #800201;
+    display: inline-block;
+}
+
+.breadcrumb > li
+{
+    float: left;
+}
+
+.icon-topbar
+{
+    vertical-align: middle;
+    text-align: right;
+}
+/*==================
+Footer Css
+====================*/
+.footer
+{
+    padding: 8px 20px 5px 20px;
+    font-size: 12px;
+    background: #000000;
+}
+
+.footer .footer-inner
+{
+    color: #999999;
+}
+/*==================
+Page Content Css
+====================*/
+.page-container
+{
+    /* margin-top: 55px; */
+}
+
+.page-sidebar
+{
+    height: auto;
+    background: #3f7ea6;
+    float: left;
+}
+
+.page-content
+{
+    margin-left: 225px;
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.search-text
+{
+    text-align: right;
+}
+
+.dropdown-menu .divider
+{
+    margin: 0px;
+}
+
+/*==================
+Index page Css
+====================*/
+.index-box1, .index-box2
+{
+    position: relative;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.index-box1 .glyphicon, .index-box2 .glyphicon
+{
+    font-size: 50px;
+    min-height: 85px;
+    display: inline-block;
+}
+
+.index-box1 .text, .index-box2 .text
+{
+    line-height: 0.9;
+    font-size: 40px;
+}
+
+.index-box1 .viewbtn, .index-box2 .viewbtn
+{
+    font-size: 11px;
+    background: #79258c;
+    display: block;
+    padding: 6px 5px;
+    color: #ffffff;
+}
+
+.index-box1 .viewbtn:hover
+{
+    background: #691b7b;
+    text-decoration: none;
+}
+
+.index-box2 .viewbtn
+{
+    background: #eaa12f;
+    color: #ffffff;
+}
+
+.index-box2 .viewbtn:hover
+{
+    background: #df9521;
+    text-decoration: none;
+}
+
+.annouce-box
+{
+    padding: 5px 70px 5px 35px;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.annouce-box .annouce-icon
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 5px 7px;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.media-body.in
+{
+    border-left: 2px solid #35AA47;
+}
+
+.media-body.out
+{
+    border-right: 2px solid #E02222;
+}
+
+.feed-time
+{
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    font-style: italic;
+    font-size: 11px;
+    color: #518eee;
+}
+/*==================
+Popup CSS
+====================*/
+.grade-popup
+{
+    padding: 0px 20px;
+}
+
+/*==================
+Form and Button Css
+====================*/
+input[type="radio"]
+{
+    margin-top: 2px !important;
+}
+
+select.form-control.input-sm option
+{
+    padding-left: 15px;
+}
+
+select.form-control option
+{
+    padding-left: 15px;
+}
+
+select.input-sm
+{
+    line-height: 1.9;
+}
+
+.form-control
+{
+    height: auto;
+    font-size: 13px;
+    padding: 4px 10px;
+}
+/*In Firefox Chosefile height Issues*/
+.glyphicon-refresh
+{
+    cursor: pointer;
+}
+
+.btn, .form-control, .label, .btn-lg, .btn-group-lg > .btn, .btn-sm, .btn-group-sm > .btn, .btn-xs, .btn-group-xs > .btn, .pagination > li:first-child > a, .pagination > li:first-child > span, .pagination > li:last-child > a, .pagination > li:last-child > span, .alert
+{
+    border-radius: 0px;
+}
+
+.table > thead > tr > th
+{
+    border-bottom: 1px solid #DDD;
+}
+
+.form-horizontal .control-label, label
+{
+    color: #000000;
+    font-weight: normal;
+}
+
+.radio-btn input
+{
+    margin-top: -4px;
+    vertical-align: middle;
+}
+
+.checkbox-field .control-label
+{
+    padding-top: 0px;
+}
+
+.checkbox-field div input
+{
+    margin-left: 7px;
+}
+
+.checkbox-field div input:first-child
+{
+    margin-left: 0px;
+}
+
+.mandatory-sign
+{
+    color: #ff0000;
+    font-size: 11px;
+    vertical-align: top;
+    position: relative;
+    top: -2px;
+    margin-right: 3px;
+}
+
+.checkbox-list
+{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.checkbox-list li
+{
+    margin-bottom: 3px;
+}
+
+.checkbox-list li label
+{
+    font-weight: normal;
+}
+
+.form-group
+{
+    margin-bottom: 8px;
+}
+
+.table-input
+{
+    display: inline-block;
+    padding: 3px;
+    text-align: center;
+    width: 50px;
+}
+/*==================
+Pagination Css
+====================*/
+ul.pagination
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+.tools-dropdown
+{
+    position: relative;
+}
+
+.tools-dropdown ul.dropdown-menu
+{
+    right: 0px;
+    top: 31px;
+    left: inherit;
+}
+
+.tools-dropdown .btn .glyphicon
+{
+    vertical-align: middle;
+}
+
+.pagi-nation
+{
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+}
+
+.pagi-nation input, .pagi-nation select
+{
+    padding: 2px;
+    min-height: 15px !important;
+}
+
+.pagi-nation .pg-gobtn
+{
+    padding: 4px 7px;
+}
+
+.pagi-nation .page-navigate
+{
+    text-align: right;
+}
+
+.pagi-nation .page-navigate .btn-typ4
+{
+    padding: 1px 7px 6px;
+}
+
+.pagi-nation .page-navigate .prev
+{
+    margin: 0px 10px 0px 5px;
+    padding-right: 7px;
+}
+
+.pagi-nation .page-navigate .next
+{
+    margin: 0px 5px 0px 10px;
+    padding-right: 7px;
+}
+
+.pagi-nation .page-navigate .prev .icon-chevron-left, .pagi-nation .page-navigate .next .icon-chevron-right
+{
+    width: 11px;
+}
+/*==================
+Date Picker CSS
+====================*/
+.date
+{
+    position: relative;
+    display: inline-block;
+}
+
+.date .add-on
+{
+    position: absolute;
+    right: -28px;
+    top: -1px;
+    font-size: 23px;
+    cursor: pointer;
+    color: #BF5E0A;
+}
+
+.date-field
+{
+    display: inline-block;
+    width: 90px;
+}
+
+.bootstrap-datetimepicker-widget
+{
+    z-index: 9999999;
+}
+
+.bootstrap-datetimepicker-widget td.day
+{
+    color: #000000;
+}
+
+.bootstrap-datetimepicker-widget td.day.new, .bootstrap-datetimepicker-widget td.day.old
+{
+    color: #666666;
+}
+
+.bootstrap-datetimepicker-widget td.day.active
+{
+    color: #ffffff;
+}
+
+.form-control:focus + .icon-calender
+{
+    background-position: -178px -111px !important;
+}
+/****************************
+* Approval Page CSS
+****************************/
+.enquiry-form .form-header
+{
+    position: relative;
+}
+
+.enquiry-form .form-header .form-head
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #2e73e2;
+    padding: 13px 12px 12px;
+    cursor: pointer;
+}
+
+.search-option .search-option-txt
+{
+    width: 100px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+/****************************
+* Top Page Content CSS
+****************************/
+.page-top-right
+{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.page-top-left
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.page-top
+{
+    min-height: 45px;
+    position: relative;
+}
+
+.add-new
+{
+    text-align: right;
+}
+
+.usergroup-dropdown
+{
+    display: inline-block;
+    width: 70%;
+}
+
+/********************
+Property CSS
+********************/
+.pro-header
+{
+    margin-bottom: 10px;
+    padding: 10px 10px 0px 10px;
+    background: #d17c33;
+    color: #ffffff;
+}
+
+.pro-header strong, .pro-header span
+{
+    display: block;
+}
+
+.pro-header strong
+{
+    text-shadow: 1px 1px #000000;
+}
+
+.publish-btn
+{
+    padding: 10px !important;
+    color: #ffffff;
+    font-weight: bold;
+    display: inline-block;
+    background: #900;
+    border: 1px solid #900;
+}
+
+.publish-btn:hover
+{
+    background: #930;
+    border: 1px solid #900;
+    color: #ffffff;
+}
+
+.services-list
+{
+    border: 1px solid #dfdfdf;
+}
+
+.services-list .checkbox
+{
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+
+.services-list .checkbox:last-child
+{
+    border-bottom: 0px;
+}
+
+.publishbtn
+{
+    margin-bottom: 10px;
+    text-align: right;
+}
+/*******************
+Image Gallery CSS
+********************/
+.image-box
+{
+    height: 150px;
+    width: 160px;
+    border: 1px solid #dfdfdf;
+    padding: 2px;
+    text-align: center;
+}
+
+.image-info .name
+{
+    margin: 0px 0px 10px;
+}
+
+/********************
+Dashboard CSS
+********************/
+.dash-booking
+{
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.dash-booking label
+{
+    font-weight: normal;
+}
+
+/**********************
+Booking CSS
+**********************/
+.top-search
+{
+    position: absolute;
+    right: 20px;
+    top: 7px;
+    color: #bf5e0a;
+}
+
+.booking-status .pull-left
+{
+    margin-right: 25px;
+}
+
+.booking-status .book-info-bg
+{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #d3d3d3;
+    vertical-align: middle;
+}
+
+.booking-status .book-info-ttl
+{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333333;
+    line-height: 14px;
+}
+/*********************
+Add Agent Property CSS
+***********************/
+.listing-box
+{
+    position: relative;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.listing-box .header
+{
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #023059;
+}
+
+.listing-box .cancel-btn
+{
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    padding: 3px 5px 3px;
+    border-radius: 100%;
+    z-index: 1;
+    color: #FFF;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.listing-box .cancel-btn:hover
+{
+    background: #3F7EA6;
+}
+/**********************
+Commission Detais CSS
+**********************/
+.com-data
+{
+    padding: 0px !important;
+    border-top: 0px !important;
+}
+/***** Add-Banner Page CSS *****/
+.layout-img-selection
+{
+    position: absolute;
+    top: 0%;
+    left: 100%;
+    max-width: 100%;
+}
+
+.layout-img-number
+{
+    margin: 7px auto 0px;
+    background-color: #efefef;
+    font-size: 13px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    vertical-align: middle;
+    display: block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    padding-top: 3px;
+    color: #333333;
+}
+
+.form-control.error-input
+{
+    border: 1px solid #ebccd1;
+    background-color: #f2dede;
+    color: #424242;
+}
+
+.error-msg-txt
+{
+    color: #ff0000;
+    display: block;
+    margin-top: 5px;
+}
+/***** Multiple Slection CSS *****/
+.multiple-dropdown .fa-angle-double-left, .multiple-dropdown .fa-angle-double-down, .multiple-dropdown .fa-angle-double-right, .multiple-dropdown .fa-angle-double-up
+{
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    border-radius: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4px 10px;
+}
+
+.fa-angle-double-left:before, .fa-angle-double-down:before, .fa-angle-double-right:before, .fa-angle-double-up:before
+{
+    font-family: 'FontAwesome';
+    font-size: 16px;
+    line-height: 16px;
+    cursor: pointer;
+    cursor: pointer;
+}
+
+.fa-angle-double-left:before
+{
+    content: "\f100";
+}
+
+.fa-angle-double-down:before
+{
+    content: "\f103";
+}
+
+.fa-angle-double-right:before
+{
+    content: "\f101";
+}
+
+.fa-angle-double-up:before
+{
+    content: "\f102";
+}
+
+.asc-desc
+{
+    margin-top: 45px;
+}
+
+/*
+###############
+  New changes
+###############
+*/
+.mrg7-B
+{
+    margin-bottom: 7px;
+}
+
+.add_edit-btn
+{
+    margin-right: 5px;
+}
+
+.top-control .back_btn
+{
+    text-align: right;
+}
+
+/* Set Room rates all pages */
+.alert-warning .txt
+{
+    text-align: right;
+}
+
+.txt .pax-child, .child
+{
+    margin-left: 20px;
+}
+
+.txt .pax-count
+{
+    display: inline-block;
+}
+
+.div_block
+{
+    display: inline-block;
+}
+
+.mob_block
+{
+    display: inline-block;
+}
+
+.box-typ7 .btn-typ1
+{
+    margin-right: 5px;
+}
+
+.img_responsive1
+{
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+}
+
+.pay-logo
+{
+    margin: 0px 0px 0px 10px;
+    display: inline-block;
+}
+
+.booking-code
+{
+    text-align: right;
+}
+
+.booking-code .btn-success
+{
+    margin: 0px 10px 0px 0px;
+}
+
+/* for down arrow */
+.down-arr
+{
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.down-arr:hover, .down-arr:focus
+{
+    color: #bf5e0a;
+}
+
+.segment_checkbox
+{
+    padding-top: 0px !important;
+}
+
+.filter-OFF
+{
+    color: #dfdfdf;
+    cursor: pointer;
+    float: right;
+}
+.filter-ON
+{
+    color: #333333;
+    cursor: pointer;
+    float: right;
+}
+
+.mAdd
+{
+    font-size: large;
+    cursor: pointer;
+    color: #000000;
+}
+
+.mDelete
+{
+    font-size: initial;
+    cursor: pointer;
+    color: red;
+}
+
+.loader
+{
+    height: 100%;
+    position: fixed;
+    padding-top: 8%;
+    width: 100%;
+    z-index: 999;
+    display: none; /*background-color: #E6E6E6;     opacity: 0.89;*/
+    background-color: rgba(230, 230, 230, 0.4);
+    text-align: center;
+}
+.header-white
+{
+    margin-bottom: 10px;
+    padding: 10px 10px 0px 10px;
+    background: #d17c33;
+    color: #ffffff;
+}
+
+.input-small
+{
+    height: 25px;
+    padding: 0;
+}
+.f-R
+{
+    float: right;
+}
+.f-L
+{
+    float: left;
+}
+.dsp-T
+{
+    display: table;
+    width: 100%;
+}
+.dsp-N
+{
+    display: none;
+}
+.dsp-B
+{
+    display: block;
+}
+.dsp-IFlex
+{
+    display: inline-flex;
+}
+.dsp-IN strong, .dsp-IN span
+{
+    display: inline;
+}
+/*tr {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}*/
+
+
+.error_msg_net_validate
+{
+    color: red !important;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.link-white
+{
+    color: #FFF;
+    text-decoration: underline;
+}
+
+.alert
+{
+    padding: 5px;
+    font-weight: bold;
+}
+
+.sorting_disabled
+{
+    padding-right: 8px !important;
+}
+
+.dataTables_length
+{
+    float: left;
+}
+
+.dataTables_paginate
+{
+    float: right;
+}
+
+.error_icon
+{
+    position: absolute;
+    margin-left: 5px;
+}
+
+.tooltip-inner 
+{
+    min-width:150px;
+    max-width: 100%;
+    /* If max-width does not work, try using width instead */ 
+}
+
+#newlyGeneratedOrders > .table > tbody > tr > td
+{
+    padding:2px;
+}
+
+.splitorder
+{
+    max-height:200px;
+    overflow:auto;
+    margin-top:15px;
+}

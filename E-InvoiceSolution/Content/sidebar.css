@@ -1,0 +1,188 @@
+/*==================
+Sidebar Css
+====================*/
+.page-sidebar .glyphicon { color:#ffffff;}
+
+ul.sidebar-menu{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+	margin-bottom:20px;
+}
+ul.sidebar-menu > li {
+	display: block;
+	margin: 0;
+	padding: 0;
+	border: 0px;
+}
+ul.sidebar-menu .sb-search > a {
+	border: 1px solid #5C5C5C;
+	background:#bf5e0a;
+}
+ul.sidebar-menu > li > a {
+	display: block;
+	position: relative;
+	margin: 0;
+	border: 0px;
+	padding: 10px;
+	text-decoration: none;
+	font-size: 14px;
+	font-family: 'open_sansregular';
+	border-top: 1px solid #5397c2;
+	border-bottom: 1px solid #215584;
+	color: #ffffff;
+	background-color:#3f7ea6;
+}
+ul.sidebar-menu > li > a .title{ margin-left:10px; }
+ul.sidebar-menu > li > a .arrow {
+	position:absolute;
+	top:15px;
+	right:10px;
+	font-size:11px;
+}
+ul.sidebar-menu > li > ul.sub-menu{ padding:0px; display:none;}
+ul.sidebar-menu > li > ul.sub-menu > li {
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+}
+ul.sidebar-menu > li > ul.sub-menu > li > a {
+	display: block;
+	margin: 0px 0px 0px 0px;
+	padding: 5px 0px 5px 38px;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 300;
+	background: none;
+	color:#ffffff;
+}
+ul.sidebar-menu > li > ul.sub-menu > li > .sub-active{
+	background: #326a9c !important;
+	color:#ffffff;
+}
+ul.sidebar-menu > li > ul.sub-menu > li > a:hover {
+	background: #326a9c !important;
+	color:#ffffff;
+}
+ul.sidebar-menu > li.sb-search{ min-height:50px; }
+ul.sidebar-menu > li.open > a, 
+ul.sidebar-menu > li.sb-search a:hover,ul.sidebar-menu > li a:hover,ul.sidebar-menu > li a:focus {
+	background: #215584;
+}
+ul.sidebar-menu > li.active > a {
+	background: #215584 !important;
+	color:#ffffff;
+}
+ul.sidebar-menu > li.open > ul.sub-menu {
+	display:block;
+	background:#3b88b8;
+}
+.sb-collaps ul.sidebar-menu > li > a > .title, 
+.sb-collaps ul.sidebar-menu > li > a > .arrow{
+	display:none !important;
+}
+.sb-collaps ul.sidebar-menu > li:hover {
+	width: 225px !important;
+	position: relative !important;
+	z-index: 2000 !important;
+	display: block !important;
+}
+.sb-collaps ul.sidebar-menu > li:hover a.main-name{
+	background:#215584 !important;
+}
+.sb-collaps ul.sidebar-menu > li:hover > a > .title{
+	display:inline-block !important;
+}
+.sb-collaps ul.sidebar-menu > li:hover > .sub-menu {
+	background:#023059;
+	width: 187px;
+	position: absolute;
+	z-index: 2000;
+	left: 38px;
+	margin-top:0;
+	top: 100%;
+	display: block !important;
+}
+.sb-collaps ul.sidebar-menu > li:hover > .sub-menu li > a  {
+	padding-left:20px;
+}
+.sidebar-search{ position:relative;}
+.sidebar-search input{
+	background:#333333;
+	border:1px solid #666666;
+	border-width:0px 1px 1px 0px;
+	padding:4px 5px;
+	color:#ffffff;
+}
+.sidebar-search .glyphicon-search{ cursor:pointer; position:absolute; left:145px; top:15px;}
+.side-control{ 
+	position:absolute !important; 
+	right:0px; top:0px; 
+	z-index:99; 
+	padding:4px 6px !important;
+	display:inline-block !important;
+	}
+.sb-collaps ul.sidebar-menu > li > .sidebar-search input{
+	display:none !important;
+}
+.sb-collaps .sidebar-search .glyphicon-search{ display:none;}
+
+@media (max-width: 979px){
+	.visible-1024{ display:block; }
+	.nav-collapse.collapse {
+		height: 0px;
+		overflow: hidden!important;
+	}
+	.page-sidebar ul {
+		margin-top: 0px;
+		width: 100%;
+		float:none;
+	}
+	.nav-collapse {
+		clear: both;
+	}
+	.side-control{  display:none !important; }
+	ul.sidebar-menu > li.sb-search{ display:none;}
+	ul.sidebar-menu{ margin-bottom:0px; }
+}
+
+@media (min-width: 980px){
+	.nav-collapse.collapse {
+		height: auto!important;
+		overflow: visible!important;
+	}
+	.sb-collaps .page-sidebar{
+		width:37px;
+	}
+	.sb-collaps	.page-content {
+		margin-left: 37px;
+	}
+	.side-control{
+		display:inline-block;	
+		width:auto;
+		margin:10px 11px 0px 0px !important;
+	}
+	.sb-collaps .side-control{
+		display:inline-block;
+		width:auto;
+		margin:10px 0px 0px 5px !important;
+		position:relative !important;
+	}
+}
+@media (min-width: 480px) and (max-width:979px){
+	.navbar-nav .open .dropdown-menu {
+		position: absolute;
+		float: left;
+		width: auto;
+		margin-top: 2px;
+		background:#ffffff;
+	}
+	.page-sidebar.nav-collapse{
+		position:absolute;
+		right: 0;
+		z-index:99;
+		width:300px !important;
+	}
+	.sb-collaps ul.sidebar-menu > li > a > .title, .sb-collaps ul.sidebar-menu > li > a > .arrow{ display:block !important;}
+	.side-inputbox{ display:block !important; }
+}

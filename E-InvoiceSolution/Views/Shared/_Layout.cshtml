@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+
+    <link rel="icon" href="images/favicon.ico" />
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <link href="/Content/style.css?v=0.4" rel="stylesheet" />
+    <link href="/Content/btn-icon.css" rel="stylesheet" />
+    <link href="/Content/style-responsive.css" rel="stylesheet" />
+    <link href="/Content/sidebar.css" rel="stylesheet" />
+    <link href="/Content/common.css" rel="stylesheet" />
+    <link href="/Content/stylesheet.css" rel="stylesheet" />
+    <script src="/Scripts/modernizr-2.6.2-respond-1.1.0.min.js" type="text/javascript"></script>
+    <link href="/Content/table-data.css" rel="stylesheet" />
+    <link href="/Content/table_responsive.css" rel="stylesheet" />
+    <link href="/Content/responsivetabs.css" rel="stylesheet" />
+    <link href="/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="/Scripts/common.js"></script>
+
+
+    @*@Styles.Render("~/Content/css")
+
+        @Scripts.Render("~/bundles/header-js")*@
+</head>
+<body>
+    <div class="navbar navbar-default header">
+        <div id="Loader" class="loader">
+            <img style="display: block; margin: auto;" alt="progress" src="/images/ajaxloaderTransperent.gif" />
+        </div>
+        <div id="Confirm" class="loader">
+        </div>
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/interfacehome.asp">
+                    Admin Interface
+                </a>
+                <button type="button" class="navbar-toggle visible-xs visible-sm" data-toggle="collapse"
+                        data-target=".nav-collapse">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user mrg5-R"></span>
+                                <asp:Label ID="lblUserName" runat="server" Text="Administrator"></asp:Label>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!--<li><a href="#">My Profile</a></li>
+                                <li class="divider"></li>-->
+                                <li>
+                                    <a href="/dontnet_site/SessionTransfer.aspx?out=1&url=<%=strRootURL %>/default.asp?out=1">
+                                        Log out
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-container clearfix">
+        <div class="page-sidebar collapse nav-collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <ul class="sidebar-menu">
+                <li class="sb-search">
+                    <a href="javascript:;" class="pd5 box-typ5 side-control hidden-xs">
+                        <span class="glyphicon glyphicon-list"></span>
+                    </a>
+                </li>
+                <li class="main-lnk">
+                    <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/interfacehome.asp"
+                       class="main-name">
+                        <i class="glyphicon glyphicon-home"></i><span class="title">Home</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="main-lnk">
+                    <a href="javascript:;" class="main-name">
+                        <i class="glyphicon glyphicon-list-alt">
+                        </i><span class="title">IMS</span> <span class="glyphicon glyphicon-chevron-left arrow">
+                        </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/IMS/inventorydetails.asp">
+                                Inventory Management
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/IMS/invprinttofalse.asp">
+                                InvPrinted Management
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/IMS/invoicesforprinting.asp">
+                                Invoices For Printing
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/IMS/invoicestatus.asp">
+                                Invoice Details
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/postback/ibspostback.asp">
+                                IBS Postback Interface
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/tasks/updatereportdata.asp">
+                                Report Data Update
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="main-lnk">
+                    <a href="javascript:;" class="main-name">
+                        <i class="glyphicon glyphicon-th">
+                        </i><span class="title">OMS</span> <span class="glyphicon glyphicon-chevron-left arrow">
+                        </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/IMS/searchdisplay.asp">
+                                Order Management
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/IMS/deleteorders.asp">
+                                Delete Error Invoices
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/IMS/omsemailtemplate.asp">
+                                OMS Mail Template Interface
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="main-lnk">
+                    <a href="javascript:;" class="main-name">
+                        <i class="glyphicon glyphicon-list">
+                        </i><span class="title">POMS</span> <span class="glyphicon glyphicon-chevron-left arrow">
+                        </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/IMS/searchpo.asp">
+                                Purchase Order Management
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/bulkproducts/bulkorderhome.asp">
+                                Bulk Order Management
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/bulkproducts/bulkconditions.asp">
+                                Bulk Product Management
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="main-lnk">
+                    <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/process.asp"
+                       class="main-name">
+                        <i class="glyphicon glyphicon-refresh"></i><span class="title">
+                            Automation
+                            Process
+                        </span> <span class="selected"></span>
+                    </a>
+                </li>
+                <li class="main-lnk">
+                    <a href="Javascript:;" class="main-name">
+                        <i class="glyphicon glyphicon-text-color">
+                        </i><span class="title">HAI</span> <span class="glyphicon glyphicon-chevron-left arrow">
+                        </span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/hai/spell/bydist.asp">
+                                Spell
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/hai/kw/header.asp">
+                                Keywords
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/hai/cp/bypagename.asp">
+                                Custom Pages
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/hai/metadata/metadata.asp">
+                                Metadata
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/hai/metadata/Setmetatags.asp">
+                                Meta Tags For Search Page
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/hai/myoldadmin/herbs.asp">
+                                Herbs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/categorization/categoryupdate.asp">
+                                Categorization
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="main-lnk">
+                    <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/feedgeninterface.asp"
+                       class="main-name"><i class="fa fa-feed"></i><span class="title">Generate Feeds</span></a>
+                </li>
+                <li class="main-lnk">
+                    <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/SplitPO.asp"
+                       class="main-name"><i class="fa fa-columns"></i><span class="title">SplitPO</span></a>
+                </li>
+                <li class="main-lnk">
+                    <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/orderimports.asp"
+                       class="main-name"><i class="fa fa-expand"></i><span class="title">Order Import & Exports</span></a>
+                </li>
+                <li class="main-lnk">
+                    <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/interfaceusers.asp"
+                       class="main-name">
+                        <i class="glyphicon glyphicon-user"></i><span class="title">
+                            User Account
+                            Management
+                        </span>
+                    </a>
+                </li>
+                <li class="main-lnk">
+                    <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/clearancesale/clearancehome.asp"
+                       class="main-name"><i class="fa fa-tag"></i><span class="title">Clearence Sale</span></a>
+                </li>
+                <li class="main-lnk">
+                    <a href="/dontnet_site/SessionTransfer.aspx?dir=2asp&url=<%= strRootURL %>/DTS/postback/default.asp"
+                       class="main-name">
+                        <i class="fa fa-arrow-circle-left"></i><span class="title">
+                            Post Back
+                            Orders Import Interface
+                        </span>
+                    </a>
+                </li>
+                <li class="main-lnk">
+                    <a href="#" class="main-name">
+                        <i class="fa fa-file-text"></i><span class="title">Report</span>
+                    </a>
+                </li>
+            </ul>
+            <!-- END SIDEBAR MENU -->
+        </div>
+        <div class="page-content">
+            <form id="frmNavigation" runat="server">
+                <div class="container body-content">
+                    @RenderBody()
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/moment.js"></script>
+    <script src="/Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="/Scripts/design-global.js"></script>
+    <script src="/Scripts/easyResponsiveTabs.js"></script>
+    @*@Scripts.Render("~/bundles/footer-js")
+        @RenderSection("scripts", required: false)*@
+</body>
+</html>

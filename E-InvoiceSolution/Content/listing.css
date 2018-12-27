@@ -1,0 +1,26 @@
+.listing-box{
+	position:relative;
+	margin-bottom:20px;
+	padding-bottom:20px;
+	border-bottom:1px solid #dddddd;
+}
+.listing-box .cancel-btn{
+	position:absolute;
+	right:2px;
+	top:-14px;
+	padding:3px 5px 3px;
+	border-radius:100%;
+	z-index:1;
+	color:#ffffff;
+	cursor:pointer;
+	font-size:11px;	
+}
+.btnbar{
+	border-top:1px solid #dddddd;
+	padding:15px 15px 15px 0px;
+	margin:0px -15px -15px;
+}
+.prodtl-img {
+	border: 1px solid #D6D6D6;
+	padding: 3px;
+}

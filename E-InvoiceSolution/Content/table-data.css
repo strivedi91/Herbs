@@ -1,0 +1,130 @@
+.alumni-submit{ background-color:#f5f5f5; border-top:1px solid #e5e5e5; margin:0px -15px -15px -15px; }
+
+
+/***** Table Type 2 *****/
+.table-typ2 { border:1px solid #E5EFF6; margin-bottom:10px; }
+.table-typ2 > thead > tr > th,
+.table-typ2 > thead > tr > td  {
+	font-size:14px;
+	color:#666666;
+	font-weight:normal;
+	border-right:1px solid #e5eff6 !important;
+	}
+
+.table-typ2 > thead > tr > th,
+.table-typ2 > tbody > tr > th,
+.table-typ2 > tfoot > tr > th,
+.table-typ2 > thead > tr > td,
+.table-typ2 > tbody > tr > td,
+.table-typ2 > tfoot > tr > td {
+	padding:8px 10px;
+	vertical-align:middle;
+	border:1px solid #E5EFF6;
+	border-width:0 0 1px;
+	}
+.table-striped > tbody > tr:nth-child(2n+1) > td,
+.table-striped > tbody > tr:nth-child(2n+1) > th  {
+	background-color: #fcfcfc;
+	}
+.table-typ2 > tbody > tr:hover > td,
+.table-typ2 > tbody > tr:hover > th {
+  background-color: #f5fafd;
+}
+.table-typ2 > thead > tr > th,
+.table-typ2 > thead > tr > td { background:#F0F6FA; }
+
+.table-typ2 > tbody > tr > td .tbl-lnk1 { color:#800201; text-decoration:none; }
+.table-typ2 > tbody > tr > td .tbl-lnk1:hover { text-decoration:underline; }
+
+/***** Table Type 1 *****/
+.table-typ1 { border-bottom:1px solid #dddddd; }
+.table-typ1 > thead > tr > th:last-child{ border-right:1px solid #3f7ea6; }
+
+.table-typ1 > tbody > tr > td{ border-right:1px solid #dddddd; border-left:1px solid #dddddd; }
+.table-typ1 > thead > tr > th,
+.table-typ1 > thead > tr > td, 
+.table-typ1 > tbody > tr > th{
+	background-color:#3f7ea6; 
+	color:#ffffff; 
+	padding:8px 10px; 
+	vertical-align:middle; 
+	border-left:1px solid #3f7ea6; 
+	border-bottom:1px solid #3f7ea6;
+	border-right:1px solid #dddddd;  
+}
+.table-typ1 > thead > tr > th a{ position:relative; }
+.table-typ1 > tbody > tr > td, .table-typ1 > tbody > tr > td, 
+.table-typ1 > tfoot > tr > td{ padding:8px 10px; vertical-align:middle; }
+.table-typ1 > tbody > tr.alt-bg1 > td{ background:#f8ebeb; }
+.table-typ1 > tbody > tr.alt-bg2 > td{ background:#efeeee; }
+.table-typ1 > tbody > tr.alt-bg3 > td{ background:#e0f9e2; }
+.btn-action{ margin-right:5px; }
+
+/***** Table Type 3 *****/
+.table-typ3 { border:1px solid #dddddd; border-width:1px 1px 0 0; }
+
+.table-typ3 > thead > tr > th:last-child{ border-right:1px solid #dddddd; }
+.table-typ3 > tbody > tr > td.selected { background-color:#f7a5a5; }
+.table-typ3 > tbody > tr > td.active { background-color:#8dc387; }
+.table-typ3 > thead > tr > th,
+.table-typ1 > tbody > tr > th, 
+.table-typ3 > tfoot > tr > th{
+	background-color:#3F7EA6; 
+	color:#ffffff; 
+	padding:5px 4px; 
+	vertical-align:middle; 
+	border-left:1px solid #dddddd; 
+	border-bottom:1px solid #dddddd;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#ffffff;
+}
+
+.table-typ3 > thead > tr.tbl-head > th {
+	background-color:#eeeeee;
+	color:#666666;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	width:28px;
+	}
+
+.table-typ3 > thead > tr > th a{ position:relative; }
+.table-typ3 > tbody > tr > td, .table-typ1 > tbody > tr > td, 
+.table-typ3 > tfoot > tr > td{ padding:8px 10px; vertical-align:middle; }
+.table-typ3 > tbody > tr:hover > td,
+.table-typ3 > tbody > tr:hover > th {
+  background-color:none;
+}
+.table-typ3 > tbody > tr > td {
+	border-bottom:1px solid #dddddd;
+	border-left:1px solid #dddddd;
+	color:#666666;
+	background-color:#f9f9f9;
+	padding:5px 10px;
+	
+}
+.table-typ3 > tbody > tr.alt-bg > td,
+.table-typ3 > tbody > tr > td.alt-bg {
+	background:#D9EDF7;
+	color:#31708F;
+}
+
+/******Rates Table CSS**********/
+.add-price td{
+	padding:6px !important;
+}
+.add-price td input{
+	padding:3px;
+	text-align:right;
+}
+.no-more-tables .table tr td .table1 { width:100%; margin-bottom:20px; background-color:#ffffff;}
+.no-more-tables .table tr td .table1 tr td { border-bottom: 1px solid #dddddd; }
+.table-bdl1 { float:left;}
+.table-bdl1 table{ width:150px;}
+.table-bdr1 { overflow:auto; margin-left:150px;}
+.table-bdl1 th { background-color: #3f7ea6; border-right:1px solid #dddddd !important;}
+.table-bdl1 tbody tr { border:1px solid #dddddd; border-width:0px 0px 1px 1px;}
+.table-bdl1 tbody tr td,
+.table-bdr1 tbody tr td {  height:47px; line-height:20px;}
