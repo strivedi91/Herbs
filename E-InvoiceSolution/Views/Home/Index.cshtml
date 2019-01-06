@@ -3,6 +3,98 @@
 }
 
 <div class="jumbotron">
-    <h2>Automation Tasks</h2>
-    
+    <h3>Automation Task</h3>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="ddlDistributors">Distributors</label>
+                @Html.DropDownList("ddlDistributors", ViewBag.DistributorsList as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="ddlPos">Purchase Orders</label>
+                @Html.DropDownList("ddlPos", new SelectList(new List<string>()), new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="invoice1">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="button" class="btn btn-success" id="btnUpload" value="Upload">
+            </div>
+        </div>
+    </div>
 </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function myfunction() {
+
+        $('#btnUpload').click(function () {
+            debugger;
+            // Checking whether FormData is available in browser
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $("#invoice1").get(0);
+                var files = fileUpload.files;
+
+                // Create FormData object
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+
+                // Adding one more key to FormData object
+                fileData.append('POID', $('#ddlPos').val());
+
+                $.ajax({
+                    url: '@Url.Action("UploadFiles", "Home")',
+                    type: "POST",
+                    processData: false,
+                    contentType: false,
+                    data: fileData,
+                    success: function (result) {
+                        alert(result);
+                    },
+                    error: function (err) {
+                        debugger;
+                        alert(err.statusText);
+                    }
+                });
+            } else {
+                alert("FormData is not supported.");
+            }
+        });
+
+
+
+        // Fetch and fill POS
+
+        let ddlPos = $('#ddlPos');
+
+        $('#ddlDistributors').change(function () {
+
+            var distributorId = $(this).val();
+            ddlPos.empty();
+            if (!distributorId) {
+                return;
+            }
+            $.ajax({
+                type: 'POST', // or 'GET' depending on how you have modified the method above
+                url: "@Url.Action("GetOutstandingPOsByDistributorId", "Home")",
+                data: { DistributorId: distributorId },
+                success: function (response) {
+                    console.log(response);
+                    ddlPos.append($('<option></option>').val('').text('Please Select PO'));
+                    $.each(response, function (i, item) {
+                        ddlPos.append($('<option></option>').val(item.POID).text(item.POCode));
+                    });
+                }
+            });
+        });
+    });
+</script>
