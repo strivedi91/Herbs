@@ -55,7 +55,9 @@ namespace E_InvoiceSolution.Controllers
 
                         int POID = Int32.Parse(Request["POID"]);
                         // Read the excel and store it into the database
-                        await DapperRepository.UploadExcelDataIntoNaturesBestPOTable(POID, fname);
+                        var keheUploadResult = await DapperRepository.UploadExcelDataIntoNaturesBestPOTable(POID, fname);
+
+                        return PartialView("UploadResult", keheUploadResult);
 
                     }
                     // Returns message that successfully uploaded  
@@ -71,6 +73,5 @@ namespace E_InvoiceSolution.Controllers
                 return Json("No files selected.");
             }
         }
-
     }
 }

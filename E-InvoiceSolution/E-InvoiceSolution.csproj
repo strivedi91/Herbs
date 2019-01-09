@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="Helpers\ExtensionMethods.cs" />
     <Compile Include="Models\DistributorsDropDownListModel.cs" />
+    <Compile Include="Models\KeheUploadResultModel.cs" />
     <Compile Include="Models\OutStandingPoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -235,7 +236,9 @@
     <Content Include="Scripts\tests\visual\tooltip.html" />
     <Content Include="Scripts\tooltip.js" />
     <Content Include="Scripts\transition.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -361,6 +364,8 @@
     <Content Include="Scripts\.jshintrc" />
     <Content Include="Scripts\tests\README.md" />
     <Content Include="Scripts\tests\unit\.jshintrc" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Home\UploadResult.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

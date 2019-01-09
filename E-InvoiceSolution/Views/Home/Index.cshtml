@@ -5,7 +5,7 @@
 <div class="jumbotron">
     <h3>Automation Task</h3>
     <hr />
-    <div class="row">
+    <div class="row" id="container">
         <div class="col-md-12">
             <div class="form-group">
                 <label for="ddlDistributors">Distributors</label>
@@ -58,7 +58,7 @@
                     contentType: false,
                     data: fileData,
                     success: function (result) {
-                        alert(result);
+                        $("#container").html(result);
                     },
                     error: function (err) {
                         debugger;
@@ -91,7 +91,7 @@
                     console.log(response);
                     ddlPos.append($('<option></option>').val('').text('Please Select PO'));
                     $.each(response, function (i, item) {
-                        ddlPos.append($('<option></option>').val(item.POID).text(item.POCode));
+                        ddlPos.append($('<option></option>').val(item.POID).text(item.POID+' - ' +item.POCode+' - Bulk'));
                     });
                 }
             });

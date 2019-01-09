@@ -1,0 +1,121 @@
+﻿@model E_InvoiceSolution.Models.KeheUploadResultModel
+
+@{
+    ViewBag.Title = "Kehe PO Upload Result";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+
+            <table>
+                <tbody>
+                    <tr class="tblHead">
+                        <td align="Center">Step</td>
+                        <td align="Center">Task</td>
+                        <td align="Center">No of Rows Affected</td>
+                    </tr>
+                    <tr><td>1.1</td><td>Rows Deleted From Daily PO Table</td><td align="Right">@Model.RowsDeletedFromDailyPO</td></tr>
+                    <tr></tr>
+                    <tr><td>1.2</td><td>Total Rows in Excel Sheet:</td><td align="Right">@Model.RowsInExcelSheet</td></tr>
+                    @Model.RepatedSKUsFoundInExcelSheet<=0{
+                    <tr><td>1.3</td><td>Repeated SKU were Found in Excel are:</td><td>No Repeated SKUs</td></tr>
+                    }
+                    <tr><td></td></tr>
+                    <tr><td>1.4</td><td>Rows Imported From File :D:\Adm_site\taskfiles5\NaturesBestPOFiles\2019\January\Kehe.xls</td><td align="Right">@Model.RowsImportedFromExcelSheet </td></tr>
+                    <tr><td>1.5</td><td>Deleted from the main Natures best supporting table </td><td align="Right">@Model.RowsDeltedFromNaturesBestSupportingTable </td></tr></tr>
+                    <tr><td>1.6</td><td>Update the pocode </td></tr>
+                    <tr><td>3.1</td><td>Total SKUs found in tblPurchaseOrderDetails for the POID:@Model.POID</td><td align="Right">@Model.SkusFoundIntblPurchaseOrderDetailsForPOID</td></tr>
+                    <tr><td></td><td>Total Quantity found in tblPurchaseOrderDetails for the POID:@Model.POID</td><td align="Right">@Model.QuantityFoundIntblPurchaseOrderDetailsForPOID</td></tr>
+                    <tr><td>3.2</td><td>Total SKUs received:</td><td align="Right">@Model.TotalSkusReceived</td></tr>
+                    <tr><td></td><td>Total Quantity received:</td><td align="Right">@Model.TotalQuantityReceived</td></tr>
+                </tbody>
+            </table>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td colspan="6" align="Left">
+                            <h3>Purchase Order Details</h3>
+                        </td>
+                    </tr>
+                    <tr class="tblHead">
+                        <td align="Right">POID</td>
+                        <td align="Right">POCode</td>
+                        <td align="Right">Invoice Number</td>
+                        <td align="Right">Products Count</td>
+                        <td align="Right">PO Quantity</td>
+                        <td align="Right">PO Amount</td>
+                    </tr>
+                    @foreach (var item in Model.PurchaseOrderDetails)
+                    {
+                        <tr>
+                            <td align="Right">@item.POID</td>
+                            <td>@item.POCode</td>
+                            <td>@item.InvoiceNumber</td>
+                            <td align="Right">@item.ProductCount</td>
+                            <td align="Right">@item.POQuantity</td>
+                            <td align="Right">@item.POAmount</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            <table>
+                <tbody>
+                    <tr><td colspan="4"><h3>Extra Shipped</h3></td></tr>
+                    <tr class="tblHead">
+                        <td align="Center">SKU</td>
+                        <td align="Center">Ordered Quantity</td>
+                        <td align="Center">Received Quantity</td>
+                        <td align="Center">Received Unit Cost</td>
+                        <td align="Center">Invoice Number</td>
+                    </tr>
+                    @foreach (var item in Model.ExtraShipped)
+                    {
+                        <tr>
+                            <td>@item.SKU</td>
+                            <td align="Right">@item.OrderedQty</td>
+                            <td align="Right">@item.ReceivedQty</td>
+                            <td align="Right">@item.UnitCost</td>
+                            <td>@item.InvoiceNumber</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+
+            <table>
+                <tbody>
+                    <tr><td colspan="6"><h3>Ordered But Not Received</h3></td></tr>
+                    <tr class="tblHead">
+                        <td align="Center">ProductTypeID</td>
+                        <td align="Center">SKU</td>
+                        <td align="Center">Quantity</td>
+                        <td align="Center">Received Quantity</td>
+                        <td align="Center">Actual Unit Cost</td>
+                    </tr>
+                    @foreach (var item in Model.OrderedButNotReceived)
+                    {
+                        <tr>
+                            <td align="Right">@item.ProductTypeId</td>
+                            <td>@item.SKU</td>
+                            <td align="Right">@item.OrderedQty</td>
+                            <td align="Right">@item.ReceivedQty</td>
+                            <td align="Right">@item.UnitCost</td>
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+            <a href="tasks/DownloadLogFile.asp?Path=D:\Adm_site\taskfiles5\NaturesBestPOFiles\2019\January\&amp;File=NB_PO_log172019 112150 PM.xls">here.</a>
+
+            Task Running : Natures Best Purchase Order
+        </div>
+    </div>
+</div>

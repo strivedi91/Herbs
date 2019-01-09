@@ -67,10 +67,12 @@ namespace E_InvoiceSolution.Dapper
             }
         }
 
-        public static async Task UploadExcelDataIntoNaturesBestPOTable(int POID, string Path)
+        public static async Task<KeheUploadResultModel> UploadExcelDataIntoNaturesBestPOTable(int POID, string Path)
         {
             try
             {
+                KeheUploadResultModel keheUploadResultModel = new KeheUploadResultModel();
+
                 //Read the excel file into datatable
                 DataTable excelData = ReadExcelFile(Path);
                 // Add SrNo into datatable 
@@ -82,7 +84,7 @@ namespace E_InvoiceSolution.Dapper
 
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    var data = connection.Execute
+                    var data = connection.QueryMultiple
                         ("ImportNaturesBestPOFromExcel",
                         new
                         {
@@ -92,6 +94,11 @@ namespace E_InvoiceSolution.Dapper
                         commandType: CommandType.StoredProcedure
                     );
                 }
+
+                //Fill the result object
+               
+
+                return keheUploadResultModel;
             }
             catch (Exception ex)
             {
