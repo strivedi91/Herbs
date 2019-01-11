@@ -7,20 +7,21 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-
-
-            <table>
-                <tbody>
+            <table class="table">
+                <thead>
                     <tr class="tblHead">
                         <td align="Center">Step</td>
                         <td align="Center">Task</td>
                         <td align="Center">No of Rows Affected</td>
                     </tr>
+                </thead>
+                <tbody>
                     <tr><td>1.1</td><td>Rows Deleted From Daily PO Table</td><td align="Right">@Model.RowsDeletedFromDailyPO</td></tr>
                     <tr></tr>
                     <tr><td>1.2</td><td>Total Rows in Excel Sheet:</td><td align="Right">@Model.RowsInExcelSheet</td></tr>
-                    @Model.RepatedSKUsFoundInExcelSheet<=0{
-                    <tr><td>1.3</td><td>Repeated SKU were Found in Excel are:</td><td>No Repeated SKUs</td></tr>
+                    @if (string.IsNullOrEmpty(Model.RepatedSKUsFoundInExcelSheet))
+                    {
+                        <tr><td>1.3</td><td>Repeated SKU were Found in Excel are:</td><td>No Repeated SKUs</td></tr>
                     }
                     <tr><td></td></tr>
                     <tr><td>1.4</td><td>Rows Imported From File :D:\Adm_site\taskfiles5\NaturesBestPOFiles\2019\January\Kehe.xls</td><td align="Right">@Model.RowsImportedFromExcelSheet </td></tr>
@@ -33,8 +34,8 @@
                 </tbody>
             </table>
 
-            <table>
-                <tbody>
+            <table class="table">
+                <thead>
                     <tr>
                         <td colspan="6" align="Left">
                             <h3>Purchase Order Details</h3>
@@ -48,6 +49,9 @@
                         <td align="Right">PO Quantity</td>
                         <td align="Right">PO Amount</td>
                     </tr>
+                </thead>
+                <tbody>
+
                     @foreach (var item in Model.PurchaseOrderDetails)
                     {
                         <tr>
@@ -63,8 +67,8 @@
                 </tbody>
             </table>
 
-            <table>
-                <tbody>
+            <table class="table">
+                <thead>
                     <tr><td colspan="4"><h3>Extra Shipped</h3></td></tr>
                     <tr class="tblHead">
                         <td align="Center">SKU</td>
@@ -73,6 +77,9 @@
                         <td align="Center">Received Unit Cost</td>
                         <td align="Center">Invoice Number</td>
                     </tr>
+                </thead>
+                <tbody>
+
                     @foreach (var item in Model.ExtraShipped)
                     {
                         <tr>
@@ -88,8 +95,8 @@
             </table>
 
 
-            <table>
-                <tbody>
+            <table class="table">
+                <thead>
                     <tr><td colspan="6"><h3>Ordered But Not Received</h3></td></tr>
                     <tr class="tblHead">
                         <td align="Center">ProductTypeID</td>
@@ -98,6 +105,9 @@
                         <td align="Center">Received Quantity</td>
                         <td align="Center">Actual Unit Cost</td>
                     </tr>
+                </thead>
+                <tbody>
+
                     @foreach (var item in Model.OrderedButNotReceived)
                     {
                         <tr>
@@ -112,10 +122,10 @@
 
                 </tbody>
             </table>
+            <div>
+                <a href="@Url.Action("Download", "Home", new { file = Model.DownloadFileName })" download>Download</a>
+            </div>
 
-            <a href="tasks/DownloadLogFile.asp?Path=D:\Adm_site\taskfiles5\NaturesBestPOFiles\2019\January\&amp;File=NB_PO_log172019 112150 PM.xls">here.</a>
-
-            Task Running : Natures Best Purchase Order
         </div>
     </div>
 </div>

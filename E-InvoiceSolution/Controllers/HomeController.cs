@@ -1,4 +1,5 @@
 ﻿using E_InvoiceSolution.Dapper;
+using E_InvoiceSolution.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,7 @@ namespace E_InvoiceSolution.Controllers
             var pOs = await DapperRepository.GetOutstandingPOs(DistributorId);
             return Json(pOs);
         }
+
 
         [HttpPost]
         public async Task<ActionResult> UploadFiles()
@@ -50,15 +52,20 @@ namespace E_InvoiceSolution.Controllers
                         }
 
                         // Get the complete folder path and store the file inside it.  
-                        fname = Path.Combine(Server.MapPath("~/Uploads/"), fname);
+                        fname = Path.Combine(GetUploadDirectoryPath(), fname);
                         file.SaveAs(fname);
 
                         int POID = Int32.Parse(Request["POID"]);
                         // Read the excel and store it into the database
                         var keheUploadResult = await DapperRepository.UploadExcelDataIntoNaturesBestPOTable(POID, fname);
 
-                        return PartialView("UploadResult", keheUploadResult);
+                        var html = ExtensionMethods.RenderViewToString(this.ControllerContext, "UploadResult", keheUploadResult);
+                        System.IO.File.WriteAllText(GetCreditReportDirectoryPath() + POID + "_log.xls", html);
 
+                        //Set Download path
+                        keheUploadResult.DownloadPath = GetCreditReportDirectoryPath() + POID + "_log.xls";
+                        keheUploadResult.DownloadFileName = POID + "_log.xls";
+                        return PartialView("UploadResult", keheUploadResult);
                     }
                     // Returns message that successfully uploaded  
                     return Json("File Uploaded Successfully!");
@@ -72,6 +79,39 @@ namespace E_InvoiceSolution.Controllers
             {
                 return Json("No files selected.");
             }
+        }
+
+        [HttpGet]
+        public virtual ActionResult Download(string file)
+        {
+            string fullPath = Path.Combine(GetCreditReportDirectoryPath(), file);
+            return File(fullPath, "application/vnd.ms-excel", file);
+        }
+
+        private string GetUploadDirectoryPath()
+        {
+            DateTime today = DateTime.Now;
+            string CurrentMonth = String.Format("{0:MMMM}", today);
+            string Year = DateTime.Now.Year.ToString();
+            string path = Server.MapPath("~/Uploads/NaturesBestPOFiles/" + Year + "/" + CurrentMonth + "/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            return path;
+        }
+
+        private string GetCreditReportDirectoryPath()
+        {
+            DateTime today = DateTime.Now;
+            string CurrentMonth = String.Format("{0:MMMM}", today);
+            string Year = DateTime.Now.Year.ToString();
+            string path = Server.MapPath("~/CreditReports/NaturesBestPOFiles/" + Year + "/" + CurrentMonth + "/");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            return path;
         }
     }
 }

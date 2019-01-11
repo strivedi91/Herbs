@@ -93,10 +93,34 @@ namespace E_InvoiceSolution.Dapper
                         },
                         commandType: CommandType.StoredProcedure
                     );
-                }
 
-                //Fill the result object
-               
+                    keheUploadResultModel.POID = POID;
+                    //Get number of deleted records
+                    keheUploadResultModel.RowsDeletedFromDailyPO = data.Read<int>().FirstOrDefault();
+                    //Select Total Number of Rows From Excel
+                    keheUploadResultModel.RowsInExcelSheet = data.Read<int>().FirstOrDefault();
+                    //GET Duplicate SKUs as comma separated string
+                    keheUploadResultModel.RepatedSKUsFoundInExcelSheet = data.Read<string>().FirstOrDefault();
+                    //Delete the records from another supporting table with the give POID
+                    keheUploadResultModel.RowsDeltedFromNaturesBestSupportingTable = data.Read<int>().FirstOrDefault();
+                    //retrieve the total products and quantity for the given POID from the purchase order details table and displays them
+                    var PoDetails = data.Read<dynamic>().FirstOrDefault();
+                    keheUploadResultModel.SkusFoundIntblPurchaseOrderDetailsForPOID = PoDetails.ProductsSum;
+                    keheUploadResultModel.QuantityFoundIntblPurchaseOrderDetailsForPOID = PoDetails.QuantitySum;
+                    // Retrieves the total products and qunatities in the given invoice file
+                    var InvoiceDetails = data.Read<dynamic>().FirstOrDefault();
+                    keheUploadResultModel.TotalSkusReceived = PoDetails.TotalProducts;
+                    keheUploadResultModel.TotalQuantityReceived = PoDetails.TotalQty;
+                    //Retrieves the purchase order level data for the purchase orders
+                    keheUploadResultModel.PurchaseOrderDetails = data.Read<PurchaseOrderDetails>().ToList();
+                    //Retrieves the items which are shipped but not ordered and displays them
+                    keheUploadResultModel.ShippedButNotOrdered = data.Read<ItemDetails>().ToList();
+                    //Retrieves the products which are extra shipped 
+                    keheUploadResultModel.ExtraShipped = data.Read<ItemDetails>().ToList();
+                    //retrieves the proudcts which are not shipped (ordered but not received)
+                    keheUploadResultModel.OrderedButNotReceived = data.Read<ItemDetails>().ToList();
+
+                }
 
                 return keheUploadResultModel;
             }
@@ -109,7 +133,7 @@ namespace E_InvoiceSolution.Dapper
         private static DataTable ReadExcelFile(string Path)
         {
             try
-            {
+            { 
                 string excelConnectString = $@"Provider=Microsoft.Jet.OLEDB.4.0; Data Source={Path};Extended Properties=""Excel 8.0;HDR=YES;""";
                 //string excelConnectString = @"Provider = Microsoft.Jet.OLEDB.4.0;Data Source = " + excelFileName + ";" + "Extended Properties = Excel 8.0; HDR=Yes;IMEX=1";
 
