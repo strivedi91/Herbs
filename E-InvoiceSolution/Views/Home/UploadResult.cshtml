@@ -42,12 +42,12 @@
                         </td>
                     </tr>
                     <tr class="tblHead">
-                        <td align="Right">POID</td>
-                        <td align="Right">POCode</td>
-                        <td align="Right">Invoice Number</td>
-                        <td align="Right">Products Count</td>
-                        <td align="Right">PO Quantity</td>
-                        <td align="Right">PO Amount</td>
+                        <td align="center">POID</td>
+                        <td align="center">POCode</td>
+                        <td align="center">Invoice Number</td>
+                        <td align="center">Products Count</td>
+                        <td align="center">PO Quantity</td>
+                        <td align="center">PO Amount</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,73 +55,150 @@
                     @foreach (var item in Model.PurchaseOrderDetails)
                     {
                         <tr>
-                            <td align="Right">@item.POID</td>
-                            <td>@item.POCode</td>
-                            <td>@item.InvoiceNumber</td>
-                            <td align="Right">@item.ProductCount</td>
-                            <td align="Right">@item.POQuantity</td>
-                            <td align="Right">@item.POAmount</td>
+                            <td align="center">@item.POID</td>
+                            <td align="center">@item.POCode</td>
+                            <td align="center">@item.InvoiceNumber</td>
+                            <td align="center">@item.ProductCount</td>
+                            <td align="center">@item.POQuantity</td>
+                            <td align="center">@item.POAmount</td>
                         </tr>
                     }
 
                 </tbody>
             </table>
 
-            <table class="table">
-                <thead>
-                    <tr><td colspan="4"><h3>Extra Shipped</h3></td></tr>
-                    <tr class="tblHead">
-                        <td align="Center">SKU</td>
-                        <td align="Center">Ordered Quantity</td>
-                        <td align="Center">Received Quantity</td>
-                        <td align="Center">Received Unit Cost</td>
-                        <td align="Center">Invoice Number</td>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (var item in Model.ExtraShipped)
-                    {
-                        <tr>
-                            <td>@item.SKU</td>
-                            <td align="Right">@item.OrderedQty</td>
-                            <td align="Right">@item.ReceivedQty</td>
-                            <td align="Right">@item.UnitCost</td>
-                            <td>@item.InvoiceNumber</td>
+            @if (Model.ExtraShipped.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="4"><h3>Extra Shipped</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">SKU</td>
+                            <td align="Center">Ordered Quantity</td>
+                            <td align="Center">Shipped Quantity</td>
+                            <td align="Center">Received Unit Cost</td>
+                            <td align="Center">Invoice Number</td>
                         </tr>
-                    }
+                    </thead>
+                    <tbody>
 
-                </tbody>
-            </table>
+                        @foreach (var item in Model.ExtraShipped)
+                        {
+                            <tr>
+                                <td align="center">@item.SKU</td>
+                                <td align="center">@item.OrderedQty</td>
+                                <td align="center">@item.ShippedQty</td>
+                                <td align="center">@item.WholesalePrice</td>
+                                <td align="center">@item.InvoiceNumber</td>
+                            </tr>
+                        }
 
 
-            <table class="table">
-                <thead>
-                    <tr><td colspan="6"><h3>Ordered But Not Received</h3></td></tr>
-                    <tr class="tblHead">
-                        <td align="Center">ProductTypeID</td>
-                        <td align="Center">SKU</td>
-                        <td align="Center">Quantity</td>
-                        <td align="Center">Received Quantity</td>
-                        <td align="Center">Actual Unit Cost</td>
-                    </tr>
-                </thead>
-                <tbody>
+                        @foreach (var item in Model.ShippedButNotOrdered)
+                        {
+                            <tr>
+                                <td align="center">@item.SKU</td>
+                                <td align="center">@item.OrderedQty</td>
+                                <td align="center">@item.ShippedQty</td>
+                                <td align="center">@item.WholesalePrice</td>
+                                <td align="center">@item.InvoiceNumber</td>
+                            </tr>
+                        }
 
-                    @foreach (var item in Model.OrderedButNotReceived)
-                    {
-                        <tr>
-                            <td align="Right">@item.ProductTypeId</td>
-                            <td>@item.SKU</td>
-                            <td align="Right">@item.OrderedQty</td>
-                            <td align="Right">@item.ReceivedQty</td>
-                            <td align="Right">@item.UnitCost</td>
+                    </tbody>
+                </table>
+            }
+
+            @if (Model.CreditReports.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="7"><h3>Credit Report</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">POID</td>
+                            <td align="Center">SKU</td>
+                            <td align="Center">Quantity</td>
+                            <td align="Center">Product Name</td>
+                            <td align="Center">Invoice Number</td>
+                            <td align="Center">Reason for credit</td>
+                            <td align="Center">Amount to be Credited</td>
                         </tr>
-                    }
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.CreditReports)
+                        {
+                            if (Math.Round(item.DiffinUnitCost * item.receivedqty, 2) < -0.2 && item.receivedqty > 0)
+                            {
+
+                                double ActualDiscount = Math.Round((item.actualwholesale - item.actualunitcost) / item.actualwholesale * 100);
+                                double RecievedDiscount = Math.Round((item.receivedwholesale - item.receivedunitcost) / item.receivedwholesale * 100);
+
+                                <tr>
+                                    <td align="center">@Model.POID</td>
+                                    <td align="center">@item.sku</td>
+                                    <td align="center">@item.receivedqty</td>
+                                    <td align="center">@item.product</td>
+                                    <td align="center">@Model.PurchaseOrderDetails.FirstOrDefault().InvoiceNumber</td>
+                                    <td align="center">
+
+                                        @if (ActualDiscount - RecievedDiscount > 0)
+                                        {
+                                            <span>Actual Discount is  @ActualDiscount % --Received Discount is @RecievedDiscount</span>
+                                        }
+
+                                        @if (item.receivedunitcost > item.actualunitcost)
+                                        {
+                                            <span>
+                                                Actual Unit Cost is @item.actualunitcost  -- Received unit cost is @item.receivedunitcost
+                                            </span>
+                                        }
+                                    </td>
+                                    <td align="center">$@Math.Round(item.DiffinUnitCost, 2)</td>
+                                </tr>
+                            }
+                        }
 
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+
+            }
+
+            @if (Model.OrderedButNotReceived.Count > 0)
+            {
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="6"><h3>Ordered But Not Received</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">ProductTypeID</td>
+                            <td align="Center">SKU</td>
+                            <td align="Center">Quantity</td>
+                            <td align="Center">Received Quantity</td>
+                            <td align="Center">Actual Unit Cost</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.OrderedButNotReceived)
+                        {
+                            <tr>
+                                <td align="center">@item.ProductTypeId</td>
+                                <td align="center">@item.SKU</td>
+                                <td align="center">@item.OrderedQty</td>
+                                <td align="center">@item.ReceivedQty</td>
+                                <td align="center">@item.UnitCost</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            }
+
+
+
             <div>
                 <a href="@Url.Action("Download", "Home", new { file = Model.DownloadFileName })" download>Download</a>
             </div>
