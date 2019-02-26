@@ -67,16 +67,25 @@ namespace E_InvoiceSolution.Dapper
             }
         }
 
-        public static async Task<KeheUploadResultModel> UploadExcelDataIntoNaturesBestPOTable(int POID, string Path)
+        public static async Task<KeheUploadResultModel> UploadExcelDataIntoNaturesBestPOTable(int DistributorID, int POID, string Path)
         {
             try
             {
                 KeheUploadResultModel keheUploadResultModel = new KeheUploadResultModel();
+                DataTable excelData = new DataTable();
 
-                //Read the excel file into datatable
-                DataTable excelData = ReadExcelFile(Path);
-                // Add SrNo into datatable 
-                excelData.Columns.Add("SNO", typeof(int));
+                if (DistributorID == 39)
+                {
+                    //Read the excel file into datatable
+                    excelData = ReadExcelFile(Path);
+                    // Add SrNo into datatable 
+                    excelData.Columns.Add("SNO", typeof(int));
+                }
+                if (DistributorID == 51)
+                {
+                    excelData = GenerateMcKeesonDataSetFromExcel(Path);
+                }
+
                 for (int count = 0; count < excelData.Rows.Count; count++)
                 {
                     excelData.Rows[count]["SNO"] = count + 1;
@@ -88,7 +97,7 @@ namespace E_InvoiceSolution.Dapper
                         ("ImportNaturesBestPOFromExcel",
                         new
                         {
-                            @POID = 1,
+                            @POID = POID,
                             @ExcelData = excelData.AsTableValuedParameter()
                         },
                         commandType: CommandType.StoredProcedure
@@ -101,8 +110,8 @@ namespace E_InvoiceSolution.Dapper
                     keheUploadResultModel.RowsInExcelSheet = data.Read<int>().FirstOrDefault();
                     //GET Duplicate SKUs as comma separated string
                     keheUploadResultModel.RepatedSKUsFoundInExcelSheet = data.Read<string>().FirstOrDefault();
-                    //Delete the records from another supporting table with the give POID
-                    keheUploadResultModel.RowsDeltedFromNaturesBestSupportingTable = data.Read<int>().FirstOrDefault();
+                    //Delete the records from another supporting table with the give POID                    
+                    keheUploadResultModel.RowsDeltedFromNaturesBestSupportingTable = data.Read<int>().FirstOrDefault(); ;
                     //retrieve the total products and quantity for the given POID from the purchase order details table and displays them
                     var PoDetails = data.Read<dynamic>().FirstOrDefault();
                     keheUploadResultModel.SkusFoundIntblPurchaseOrderDetailsForPOID = PoDetails.ProductsSum;
@@ -133,23 +142,129 @@ namespace E_InvoiceSolution.Dapper
         private static DataTable ReadExcelFile(string Path)
         {
             try
-            { 
+            {
+
                 string excelConnectString = $@"Provider=Microsoft.Jet.OLEDB.4.0; Data Source={Path};Extended Properties=""Excel 8.0;HDR=YES;""";
-                //string excelConnectString = @"Provider = Microsoft.Jet.OLEDB.4.0;Data Source = " + excelFileName + ";" + "Extended Properties = Excel 8.0; HDR=Yes;IMEX=1";
+
+                if (Path.EndsWith(".xlsx"))
+                {
+                    excelConnectString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Path};Extended Properties=""Excel 12.0;HDR=YES;""";
+                }
 
                 OleDbConnection objConn = new OleDbConnection(excelConnectString);
-                OleDbCommand objCmd = new OleDbCommand("Select * From [Sheet1$]", objConn);
+                objConn.Open();
+
+                List<string> sheets = new List<string>();
+                // Get First Sheet Name
+                DataTable dt = objConn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                foreach (DataRow drSheet in dt.Rows)
+                    if (drSheet["TABLE_NAME"].ToString().Contains("$"))
+                    {
+                        string s = drSheet["TABLE_NAME"].ToString();
+                        sheets.Add(s.StartsWith("'") ? s.Substring(1, s.Length - 3) : s.Substring(0, s.Length - 1));
+                    }
+
+                OleDbCommand objCmd = new OleDbCommand("Select * From [" + sheets.First() + "$]", objConn);
 
                 OleDbDataAdapter objDatAdap = new OleDbDataAdapter();
                 objDatAdap.SelectCommand = objCmd;
                 DataSet ds = new DataSet();
                 objDatAdap.Fill(ds);
+                objConn.Close();
                 return ds.Tables[0];
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+
+        private static DataTable GenerateMcKeesonDataSetFromExcel(string path)
+        {
+            DataTable dt = CreateBlankDataSet();
+            int i = 0;
+            DataTable dtFromExcel = ReadExcelFile(path);
+            foreach (DataRow dataRow in dtFromExcel.Rows)
+            {
+                i = i++;
+                string InvoiceNumber = dataRow["Invoice/Transaction Number"]?.ToString();
+                string PONumber = dataRow["PO#"]?.ToString();
+                string SKU = dataRow["Item Number"]?.ToString();
+                string ItemQuantity = dataRow["Item Quantity"]?.ToString();
+                string UnitPrice = dataRow["Item Price Unit"]?.ToString();
+                string ItemExtendedPrice = dataRow["Item Extended Price"]?.ToString();
+                string InvoiceDate = dataRow["Invoice Date"]?.ToString();
+                string Description = dataRow["Item Description"]?.ToString();
+                string UPC = dataRow["NDC/UPC value"]?.ToString();
+
+
+                dt.Rows.Add(i.ToString(),
+                    0,
+                    Convert.ToInt32(ItemQuantity),
+                    SKU,
+                    "",
+                    "",
+                    Description,
+                    UPC,
+                    Convert.ToDouble(UnitPrice),
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    InvoiceNumber,
+                    Convert.ToDateTime(InvoiceDate),
+                    0,
+                    0);
+            }
+
+            return dt;
+        }
+
+        private static DataTable CreateBlankDataSet()
+        {
+            DataTable dt = new DataTable("Table");
+            dt.Columns.Add(new DataColumn("Line", typeof(string)));
+            dt.Columns.Add(new DataColumn("Order Qty", typeof(float)));
+
+            dt.Columns.Add(new DataColumn("Ship Qty", typeof(float)));
+            dt.Columns.Add(new DataColumn("Ship Item", typeof(string)));
+
+            dt.Columns.Add(new DataColumn("Pack Size", typeof(string)));
+            dt.Columns.Add(new DataColumn("BRAND", typeof(string)));
+
+            dt.Columns.Add(new DataColumn("Description", typeof(string)));
+            dt.Columns.Add(new DataColumn("UPC Code", typeof(string)));
+
+            dt.Columns.Add(new DataColumn("Retail", typeof(float)));
+            dt.Columns.Add(new DataColumn("Suggested Retail", typeof(float)));
+
+            dt.Columns.Add(new DataColumn("Wholesale", typeof(float)));
+            dt.Columns.Add(new DataColumn("Adj Wholesale", typeof(float)));
+
+            dt.Columns.Add(new DataColumn("Discount %", typeof(float)));
+            dt.Columns.Add(new DataColumn("Discount $", typeof(float)));
+
+
+            dt.Columns.Add(new DataColumn("Net Each", typeof(float)));
+            dt.Columns.Add(new DataColumn("Net Billable", typeof(float)));
+
+
+            dt.Columns.Add(new DataColumn("UpCharges", typeof(float)));
+            dt.Columns.Add(new DataColumn("BottleTax", typeof(float)));
+
+
+            dt.Columns.Add(new DataColumn("Invoice No", typeof(float)));
+            dt.Columns.Add(new DataColumn("InvoiceDate", typeof(DateTime)));
+
+            dt.Columns.Add(new DataColumn("Store No", typeof(int)));
+            dt.Columns.Add(new DataColumn("SNO", typeof(int)));
+
+            return dt;
         }
     }
 }

@@ -50,6 +50,7 @@
 
                 // Adding one more key to FormData object
                 fileData.append('POID', $('#ddlPos').val());
+                fileData.append('DistributorID', $('#ddlDistributors').val())
 
                 $.ajax({
                     url: '@Url.Action("UploadFiles", "Home")',

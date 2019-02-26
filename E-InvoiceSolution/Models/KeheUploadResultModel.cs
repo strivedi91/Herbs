@@ -38,7 +38,7 @@ namespace E_InvoiceSolution.Models
     public class PurchaseOrderDetails
     {
         public int? POID { get; set; }
-        public int? POCode { get; set; }
+        public float? POCode { get; set; }
         public string InvoiceNumber { get; set; }
         public int? ProductCount { get; set; }
         public int? POQuantity { get; set; }

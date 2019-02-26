@@ -24,10 +24,10 @@ namespace E_InvoiceSolution.Controllers
             return Json(pOs);
         }
 
-
-        [HttpPost]
-        public async Task<ActionResult> UploadFiles()
+        private string UploadExcelFileToFolder(int DistributorID)
         {
+            string fname = string.Empty;
+
             // Checking no of files injected in Request object  
             if (Request.Files.Count > 0)
             {
@@ -38,7 +38,7 @@ namespace E_InvoiceSolution.Controllers
                     for (int i = 0; i < files.Count; i++)
                     {
                         HttpPostedFileBase file = files[i];
-                        string fname;
+
 
                         // Checking for Internet Explorer  
                         if (Request.Browser.Browser.ToUpper() == "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
@@ -50,23 +50,56 @@ namespace E_InvoiceSolution.Controllers
                         {
                             fname = file.FileName;
                         }
-
                         // Get the complete folder path and store the file inside it.  
-                        fname = Path.Combine(GetUploadDirectoryPath(), fname);
+                        fname = Path.Combine(GetUploadDirectoryPath(DistributorID), fname);
                         file.SaveAs(fname);
-
-                        int POID = Int32.Parse(Request["POID"]);
-                        // Read the excel and store it into the database
-                        var keheUploadResult = await DapperRepository.UploadExcelDataIntoNaturesBestPOTable(POID, fname);
-
-                        var html = ExtensionMethods.RenderViewToString(this.ControllerContext, "UploadResult", keheUploadResult);
-                        System.IO.File.WriteAllText(GetCreditReportDirectoryPath() + POID + "_log.xls", html);
-
-                        //Set Download path
-                        keheUploadResult.DownloadPath = GetCreditReportDirectoryPath() + POID + "_log.xls";
-                        keheUploadResult.DownloadFileName = POID + "_log.xls";
-                        return PartialView("UploadResult", keheUploadResult);
                     }
+                }
+                catch (Exception ex)
+                {
+                    return "";
+                }
+                return fname;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        private async Task<ActionResult> UpdatePO(int DistributorID, int POID, string filePath)
+        {
+
+            // Read the excel and store it into the database
+            var keheUploadResult = await DapperRepository.UploadExcelDataIntoNaturesBestPOTable(DistributorID,
+                POID, filePath);
+
+            var html = ExtensionMethods.RenderViewToString(this.ControllerContext, "UploadResult", keheUploadResult);
+            System.IO.File.WriteAllText(GetCreditReportDirectoryPath() + POID + "_log.xls", html);
+
+            //Set Download path
+            keheUploadResult.DownloadPath = GetCreditReportDirectoryPath() + POID + "_log.xls";
+            keheUploadResult.DownloadFileName = POID + "_log.xls";
+            return PartialView("UploadResult", keheUploadResult);
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> UploadFiles()
+        {
+            int POID = Int32.Parse(Request["POID"]);
+            int DistributorID = Int32.Parse(Request["DistributorID"]);
+
+            // Checking no of files injected in Request object  
+            if (Request.Files.Count > 0)
+            {
+                try
+                {
+                    //  Get all files from Request object  
+                    var fname = UploadExcelFileToFolder(DistributorID);
+
+                   return await UpdatePO(DistributorID, POID, fname);
+
                     // Returns message that successfully uploaded  
                     return Json("File Uploaded Successfully!");
                 }
@@ -88,12 +121,21 @@ namespace E_InvoiceSolution.Controllers
             return File(fullPath, "application/vnd.ms-excel", file);
         }
 
-        private string GetUploadDirectoryPath()
+        private string GetUploadDirectoryPath(int DistributorID)
         {
             DateTime today = DateTime.Now;
             string CurrentMonth = String.Format("{0:MMMM}", today);
             string Year = DateTime.Now.Year.ToString();
-            string path = Server.MapPath("~/Uploads/NaturesBestPOFiles/" + Year + "/" + CurrentMonth + "/");
+            string path = string.Empty;
+            if (DistributorID == 39)
+            {
+                path = Server.MapPath("~/Uploads/NaturesBestPOFiles/" + Year + "/" + CurrentMonth + "/");
+            }
+            else if (DistributorID == 51)
+            {
+                path = Server.MapPath("~/Uploads/McKeesonPOFiles/" + Year + "/" + CurrentMonth + "/");
+            }
+
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
