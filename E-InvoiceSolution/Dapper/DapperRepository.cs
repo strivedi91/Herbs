@@ -118,8 +118,8 @@ namespace E_InvoiceSolution.Dapper
                     keheUploadResultModel.QuantityFoundIntblPurchaseOrderDetailsForPOID = PoDetails.QuantitySum;
                     // Retrieves the total products and qunatities in the given invoice file
                     var InvoiceDetails = data.Read<dynamic>().FirstOrDefault();
-                    keheUploadResultModel.TotalSkusReceived = PoDetails.TotalProducts;
-                    keheUploadResultModel.TotalQuantityReceived = PoDetails.TotalQty;
+                    keheUploadResultModel.TotalSkusReceived = InvoiceDetails.TotalProducts;
+                    keheUploadResultModel.TotalQuantityReceived = InvoiceDetails.TotalQty;
                     //Retrieves the purchase order level data for the purchase orders
                     keheUploadResultModel.PurchaseOrderDetails = data.Read<PurchaseOrderDetails>().ToList();
                     //Retrieves the items which are shipped but not ordered and displays them
@@ -128,6 +128,8 @@ namespace E_InvoiceSolution.Dapper
                     keheUploadResultModel.ExtraShipped = data.Read<ItemDetails>().ToList();
                     //retrieves the proudcts which are not shipped (ordered but not received)
                     keheUploadResultModel.OrderedButNotReceived = data.Read<ItemDetails>().ToList();
+                    // Get the Credit report data
+                    keheUploadResultModel.CreditReports = data.Read<CreditReport>().ToList();
 
                 }
 
@@ -142,8 +144,7 @@ namespace E_InvoiceSolution.Dapper
         private static DataTable ReadExcelFile(string Path)
         {
             try
-            {
-
+            { 
                 string excelConnectString = $@"Provider=Microsoft.Jet.OLEDB.4.0; Data Source={Path};Extended Properties=""Excel 8.0;HDR=YES;""";
 
                 if (Path.EndsWith(".xlsx"))

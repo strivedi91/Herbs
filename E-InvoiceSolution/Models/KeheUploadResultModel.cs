@@ -13,6 +13,7 @@ namespace E_InvoiceSolution.Models
             this.PurchaseOrderDetails = new List<PurchaseOrderDetails>();
             this.OrderedButNotReceived = new List<ItemDetails>();
             this.ShippedButNotOrdered = new List<ItemDetails>();
+            this.CreditReports = new List<CreditReport>();
         }
 
         public int? POID { get; set; }
@@ -30,6 +31,7 @@ namespace E_InvoiceSolution.Models
         public List<ItemDetails> ExtraShipped { get; set; }
         public List<ItemDetails> ShippedButNotOrdered { get; set; }
         public List<ItemDetails> OrderedButNotReceived { get; set; }
+        public List<CreditReport> CreditReports { get; set; }
 
         public string DownloadPath { get; set; }
         public string DownloadFileName { get; set; }
@@ -38,7 +40,7 @@ namespace E_InvoiceSolution.Models
     public class PurchaseOrderDetails
     {
         public int? POID { get; set; }
-        public float? POCode { get; set; }
+        public string POCode { get; set; }
         public string InvoiceNumber { get; set; }
         public int? ProductCount { get; set; }
         public int? POQuantity { get; set; }
@@ -55,5 +57,17 @@ namespace E_InvoiceSolution.Models
         public decimal UnitCost { get; set; }
         public decimal WholesalePrice { get; set; }
         public string InvoiceNumber { get; set; }
+    }
+
+    public class CreditReport
+    {
+        public int receivedqty { get; set; }
+        public double DiffinUnitCost { get; set; }
+        public int sku { get; set; }
+        public string product { get; set; }
+        public double actualwholesale { get; set; }
+        public double actualunitcost { get; set; }
+        public double receivedwholesale { get; set; }
+        public double receivedunitcost { get; set; }
     }
 }
