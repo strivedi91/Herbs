@@ -135,6 +135,10 @@ namespace E_InvoiceSolution.Controllers
             {
                 path = Server.MapPath("~/Uploads/McKeesonPOFiles/" + Year + "/" + CurrentMonth + "/");
             }
+            else if (DistributorID == 56)
+            {
+                path = Server.MapPath("~/Uploads/EuropaSportsPOFiles/" + Year + "/" + CurrentMonth + "/");
+            }
 
             if (!Directory.Exists(path))
             {

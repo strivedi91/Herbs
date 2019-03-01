@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using ClosedXML.Excel;
+using Dapper;
 using E_InvoiceSolution.Models;
 using System;
 using System.Collections.Generic;
@@ -85,6 +86,10 @@ namespace E_InvoiceSolution.Dapper
                 {
                     excelData = GenerateMcKeesonDataSetFromExcel(Path);
                 }
+                if (DistributorID == 56)
+                {
+                    excelData = GenerateEuropaDataSetFromExcel(Path);
+                }
 
                 for (int count = 0; count < excelData.Rows.Count; count++)
                 {
@@ -144,10 +149,10 @@ namespace E_InvoiceSolution.Dapper
         private static DataTable ReadExcelFile(string Path)
         {
             try
-            { 
+            {
                 string excelConnectString = $@"Provider=Microsoft.Jet.OLEDB.4.0; Data Source={Path};Extended Properties=""Excel 8.0;HDR=YES;""";
 
-                if (Path.EndsWith(".xlsx"))
+                if (Path.ToString().ToLower().EndsWith(".xlsx"))
                 {
                     excelConnectString = $@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={Path};Extended Properties=""Excel 12.0;HDR=YES;""";
                 }
@@ -175,6 +180,54 @@ namespace E_InvoiceSolution.Dapper
                 return ds.Tables[0];
             }
             catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private static DataTable ReadExcelFileWithClosedXML(string path)
+        {
+
+            //Create a new DataTable.
+            DataTable dt = new DataTable();
+
+            try
+            {
+                //Open the Excel file using ClosedXML.
+                using (XLWorkbook workBook = new XLWorkbook(path))
+                {
+                    //Read the first Sheet from Excel file.
+                    IXLWorksheet workSheet = workBook.Worksheet(1);
+
+                    //Loop through the Worksheet rows.
+                    bool firstRow = true;
+                    foreach (IXLRow row in workSheet.Rows())
+                    {
+                        //Use the first row to add columns to DataTable.
+                        if (firstRow)
+                        {
+                            foreach (IXLCell cell in row.Cells())
+                            {
+                                dt.Columns.Add(cell.Value.ToString().Trim());
+                            }
+                            firstRow = false;
+                        }
+                        else
+                        {
+                            //Add rows to DataTable.
+                            dt.Rows.Add();
+                            int i = 0;
+                            foreach (IXLCell cell in row.Cells())
+                            {
+                                dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                                i++;
+                            }
+                        }
+                    }
+                }
+                return dt;
+            }
+            catch (Exception ex)
             {
                 throw;
             }
@@ -223,6 +276,57 @@ namespace E_InvoiceSolution.Dapper
                     0);
             }
 
+            return dt;
+        }
+
+        private static DataTable GenerateEuropaDataSetFromExcel(string path)
+        {
+            DataTable dt = CreateBlankDataSet();
+            int i = 0;
+            DataTable dtFromExcel = ReadExcelFileWithClosedXML(path);
+            foreach (DataRow dataRow in dtFromExcel.Rows)
+            {
+                i = i++;
+                DateTime InvoiceDate;
+                if (!string.IsNullOrEmpty(dataRow["Order Date"]?.ToString())
+                    && DateTime.TryParse(dataRow["Order Date"]?.ToString(), out InvoiceDate))
+                {
+                    string InvoiceNumber = dataRow["Invoice Number"]?.ToString();
+                    string PONumber = dataRow["PO Number"]?.ToString();
+                    string SKU = dataRow["Item Number"]?.ToString();
+                    string ItemQuantity = dataRow["QTY"]?.ToString();
+                    string UnitPrice = dataRow["Your Price"]?.ToString().Replace("$", "");
+                    string ItemExtendedPrice = dataRow["Ext Price"]?.ToString().Replace("$", "");
+                    //string InvoiceDate = dataRow["Order Date"]?.ToString();
+                    string Description = dataRow["Item Description"]?.ToString();
+                    string WholeSale = dataRow["Wholesale"]?.ToString().Replace("$", "");
+                    string DiscPercent = dataRow["Disc %"]?.ToString();
+
+
+                    dt.Rows.Add(i.ToString(),
+                        0,
+                        Convert.ToInt32(ItemQuantity),
+                        SKU,
+                        "",
+                        "",
+                        Description,
+                        "",
+                        Convert.ToDouble(UnitPrice),
+                        0,
+                        0,
+                        0,
+                        0,
+                        Convert.ToDouble(WholeSale),
+                        0,
+                        Convert.ToDouble(DiscPercent),
+                        0,
+                        0,
+                        InvoiceNumber,
+                        Convert.ToDateTime(InvoiceDate),
+                        0,
+                        0);
+                }
+            }
             return dt;
         }
 
