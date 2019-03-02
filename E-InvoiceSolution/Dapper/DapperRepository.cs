@@ -253,7 +253,7 @@ namespace E_InvoiceSolution.Dapper
 
 
                 dt.Rows.Add(i.ToString(),
-                    0,
+                    null,
                     Convert.ToInt32(ItemQuantity),
                     SKU,
                     "",
@@ -261,19 +261,19 @@ namespace E_InvoiceSolution.Dapper
                     Description,
                     UPC,
                     Convert.ToDouble(UnitPrice),
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    InvoiceNumber,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    Convert.ToDouble(InvoiceNumber),
                     Convert.ToDateTime(InvoiceDate),
-                    0,
-                    0);
+                    null,
+                    null);
             }
 
             return dt;
@@ -304,7 +304,7 @@ namespace E_InvoiceSolution.Dapper
 
 
                     dt.Rows.Add(i.ToString(),
-                        0,
+                        null,
                         Convert.ToInt32(ItemQuantity),
                         SKU,
                         "",
@@ -312,19 +312,19 @@ namespace E_InvoiceSolution.Dapper
                         Description,
                         "",
                         Convert.ToDouble(UnitPrice),
-                        0,
-                        0,
-                        0,
-                        0,
+                        null,
+                        null,
+                        null,
+                        null,
                         Convert.ToDouble(WholeSale),
-                        0,
+                        null,
                         Convert.ToDouble(DiscPercent),
-                        0,
-                        0,
-                        InvoiceNumber,
+                        null,
+                        null,
+                        Convert.ToDouble(InvoiceNumber),
                         Convert.ToDateTime(InvoiceDate),
-                        0,
-                        0);
+                        null,
+                        null);
                 }
             }
             return dt;

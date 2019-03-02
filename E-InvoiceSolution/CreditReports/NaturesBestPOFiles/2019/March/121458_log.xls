@@ -1,0 +1,191 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr class="tblHead">
+                        <td align="Center">Step</td>
+                        <td align="Center">Task</td>
+                        <td align="Center">No of Rows Affected</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1.1</td><td>Rows Deleted From Daily PO Table</td><td align="Right">3</td></tr>
+                    <tr></tr>
+                    <tr><td>1.2</td><td>Total Rows in Excel Sheet:</td><td align="Right">3</td></tr>
+                        <tr><td>1.3</td><td>Repeated SKU were Found in Excel are:</td><td>No Repeated SKUs</td></tr>
+                    <tr><td></td></tr>
+                    <tr><td>1.4</td><td>Rows Imported From File :D:\Adm_site\taskfiles5\NaturesBestPOFiles\2019\January\Kehe.xls</td><td align="Right"> </td></tr>
+                    <tr><td>1.5</td><td>Deleted from the main Natures best supporting table </td><td align="Right">0 </td></tr></tr>
+                    <tr><td>1.6</td><td>Update the pocode </td></tr>
+                    <tr><td>3.1</td><td>Total SKUs found in tblPurchaseOrderDetails for the POID:121458</td><td align="Right">12</td></tr>
+                    <tr><td></td><td>Total Quantity found in tblPurchaseOrderDetails for the POID:121458</td><td align="Right">1230</td></tr>
+                    <tr><td>3.2</td><td>Total SKUs received:</td><td align="Right">3</td></tr>
+                    <tr><td></td><td>Total Quantity received:</td><td align="Right">4</td></tr>
+                </tbody>
+            </table>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td colspan="6" align="Left">
+                            <h3>Purchase Order Details</h3>
+                        </td>
+                    </tr>
+                    <tr class="tblHead">
+                        <td align="center">POID</td>
+                        <td align="center">POCode</td>
+                        <td align="center">Invoice Number</td>
+                        <td align="center">Products Count</td>
+                        <td align="center">PO Quantity</td>
+                        <td align="center">PO Amount</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                        <tr>
+                            <td align="center">121458</td>
+                            <td align="center">5112172018326</td>
+                            <td align="center">7.11927e+009</td>
+                            <td align="center">12</td>
+                            <td align="center">1230</td>
+                            <td align="center">6919.0200</td>
+                        </tr>
+
+                </tbody>
+            </table>
+
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="7"><h3>Credit Report</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">POID</td>
+                            <td align="Center">SKU</td>
+                            <td align="Center">Quantity</td>
+                            <td align="Center">Product Name</td>
+                            <td align="Center">Invoice Number</td>
+                            <td align="Center">Reason for credit</td>
+                            <td align="Center">Amount to be Credited</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+                    </tbody>
+                </table>
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="6"><h3>Ordered But Not Received</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">ProductTypeID</td>
+                            <td align="Center">SKU</td>
+                            <td align="Center">Quantity</td>
+                            <td align="Center">Received Quantity</td>
+                            <td align="Center">Actual Unit Cost</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td align="center">101145</td>
+                                <td align="center">1154152</td>
+                                <td align="center">48</td>
+                                <td align="center">0</td>
+                                <td align="center">5.3000</td>
+                            </tr>
+                            <tr>
+                                <td align="center">113636</td>
+                                <td align="center">1190461</td>
+                                <td align="center">240</td>
+                                <td align="center">0</td>
+                                <td align="center">6.9000</td>
+                            </tr>
+                            <tr>
+                                <td align="center">96408</td>
+                                <td align="center">1243286</td>
+                                <td align="center">60</td>
+                                <td align="center">0</td>
+                                <td align="center">5.4600</td>
+                            </tr>
+                            <tr>
+                                <td align="center">96737</td>
+                                <td align="center">1335603</td>
+                                <td align="center">96</td>
+                                <td align="center">0</td>
+                                <td align="center">3.2000</td>
+                            </tr>
+                            <tr>
+                                <td align="center">102437</td>
+                                <td align="center">1838317</td>
+                                <td align="center">72</td>
+                                <td align="center">0</td>
+                                <td align="center">3.7300</td>
+                            </tr>
+                            <tr>
+                                <td align="center">98725</td>
+                                <td align="center">1976992</td>
+                                <td align="center">24</td>
+                                <td align="center">0</td>
+                                <td align="center">6.8900</td>
+                            </tr>
+                            <tr>
+                                <td align="center">98785</td>
+                                <td align="center">1987148</td>
+                                <td align="center">24</td>
+                                <td align="center">0</td>
+                                <td align="center">7.5000</td>
+                            </tr>
+                            <tr>
+                                <td align="center">118234</td>
+                                <td align="center">2047702</td>
+                                <td align="center">24</td>
+                                <td align="center">0</td>
+                                <td align="center">10.3400</td>
+                            </tr>
+                            <tr>
+                                <td align="center">99166</td>
+                                <td align="center">2184752</td>
+                                <td align="center">240</td>
+                                <td align="center">0</td>
+                                <td align="center">5.0300</td>
+                            </tr>
+                            <tr>
+                                <td align="center">99607</td>
+                                <td align="center">2470854</td>
+                                <td align="center">90</td>
+                                <td align="center">0</td>
+                                <td align="center">5.0300</td>
+                            </tr>
+                            <tr>
+                                <td align="center">99608</td>
+                                <td align="center">2471233</td>
+                                <td align="center">240</td>
+                                <td align="center">0</td>
+                                <td align="center">6.9000</td>
+                            </tr>
+                            <tr>
+                                <td align="center">100076</td>
+                                <td align="center">3594017</td>
+                                <td align="center">72</td>
+                                <td align="center">0</td>
+                                <td align="center">2.7200</td>
+                            </tr>
+
+
+                    </tbody>
+                </table>
+
+
+
+            <div>
+                <a href="/Home/Download" download>Download</a>
+            </div>
+
+        </div>
+    </div>
+</div>
