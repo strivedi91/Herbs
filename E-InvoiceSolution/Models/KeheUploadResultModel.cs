@@ -50,7 +50,7 @@ namespace E_InvoiceSolution.Models
     public class ItemDetails
     {
         public int? ProductTypeId { get; set; }
-        public int? SKU { get; set; }
+        public string SKU { get; set; }
         public int? OrderedQty { get; set; }
         public int? ReceivedQty { get; set; }
         public int? ShippedQty { get; set; }
@@ -63,7 +63,7 @@ namespace E_InvoiceSolution.Models
     {
         public int receivedqty { get; set; }
         public double DiffinUnitCost { get; set; }
-        public int sku { get; set; }
+        public string sku { get; set; }
         public string product { get; set; }
         public double actualwholesale { get; set; }
         public double actualunitcost { get; set; }
