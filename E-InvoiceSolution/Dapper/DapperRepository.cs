@@ -237,7 +237,17 @@ namespace E_InvoiceSolution.Dapper
         {
             DataTable dt = CreateBlankDataSet();
             int i = 0;
-            DataTable dtFromExcel = ReadExcelFile(path);
+
+            DataTable dtFromExcel;
+            if (path.EndsWith(".xls"))
+            {
+                dtFromExcel = ReadExcelFile(path);
+            }
+            else
+            {
+                dtFromExcel = ReadExcelFileWithClosedXML(path);
+            }
+
             foreach (DataRow dataRow in dtFromExcel.Rows)
             {
                 i = i++;
@@ -251,8 +261,56 @@ namespace E_InvoiceSolution.Dapper
                 string Description = dataRow["Item Description"]?.ToString().Trim();
                 string UPC = dataRow["NDC/UPC value"]?.ToString().Trim();
 
+                dt.Rows.Add(
+                        //Line
+                        i.ToString(),
+                        //Order Qty
+                        null,
+                        //Shipped Qty
+                        Convert.ToInt32(ItemQuantity),
+                        //Shipped Item
+                        SKU,
+                        //Pack Size
+                        "",
+                        //Brand
+                        "",
+                        //Description
+                        Description,
+                        // UPC Code
+                        "",
+                        //Retail
+                        Convert.ToDouble(UnitPrice),
+                        // Suggested Retail
+                        null,
+                        //Wholesale
+                        Convert.ToDouble(UnitPrice),
+                        //Adj Wholesale
+                        null,
+                        //Discount %
+                        null,
+                        //Discount $
+                        null,
+                        //Net Each
+                        null,
+                        //Net Billable
+                        null,
+                        //UpCharges
+                        null,
+                        //BottleTax
+                        null,
+                        //Invoice No
+                        Convert.ToDouble(InvoiceNumber),
+                        //InvoiceDate
+                        Convert.ToDateTime(InvoiceDate),
+                        //Store No
+                        null,
+                        //SNO
+                        null);
 
-                dt.Rows.Add(i.ToString(),
+                dt.Rows.Add(
+                    //Line
+                    i.ToString(),
+                    //
                     null,
                     Convert.ToInt32(ItemQuantity),
                     SKU,
@@ -289,7 +347,7 @@ namespace E_InvoiceSolution.Dapper
                 i = i++;
                 DateTime InvoiceDate;
                 if (!string.IsNullOrEmpty(dataRow["Order Date"]?.ToString().Trim())
-                    && DateTime.TryParse(dataRow["Order Date"]?.ToString().Trim(), 
+                    && DateTime.TryParse(dataRow["Order Date"]?.ToString().Trim(),
                     out InvoiceDate))
                 {
                     string InvoiceNumber = dataRow["Invoice Number"]?.ToString().Trim();
