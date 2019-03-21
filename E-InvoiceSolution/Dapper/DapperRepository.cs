@@ -366,8 +366,8 @@ namespace E_InvoiceSolution.Dapper
                         null,
                         //Wholesale
                         Convert.ToDouble(WholeSale),
-                        //Adj Wholesale
-                        null,
+                        //Adj Wholesale - Received Unit Price
+                        Convert.ToDouble(UnitPrice),
                         //Discount %
                         Convert.ToDouble(DiscPercent),
                         //Discount $
