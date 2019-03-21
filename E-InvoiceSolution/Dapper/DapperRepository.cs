@@ -309,7 +309,7 @@ namespace E_InvoiceSolution.Dapper
                         Convert.ToDouble(InvoiceNumber),
                         //InvoiceDate
                         null, //Convert.ToDateTime(InvoiceDate),
-                        //Store No
+                              //Store No
                         null,
                         //SNO
                         null);
@@ -323,71 +323,96 @@ namespace E_InvoiceSolution.Dapper
             DataTable dt = CreateBlankDataSet();
             int i = 0;
             DataTable dtFromExcel = ReadExcelFileWithClosedXML(path);
+            List<string> duplicateSKUList = new List<string>();
+
             foreach (DataRow dataRow in dtFromExcel.Rows)
             {
-                i = i++;
-                DateTime InvoiceDate;
-                if (!string.IsNullOrEmpty(dataRow["Order Date"]?.ToString().Trim())
-                    && DateTime.TryParse(dataRow["Order Date"]?.ToString().Trim(),
-                    out InvoiceDate))
+                string SKU = dataRow["Item Number"]?.ToString().Trim();
+                if (!duplicateSKUList.Contains(SKU))
                 {
-                    string InvoiceNumber = dataRow["Invoice Number"]?.ToString().Trim();
-                    string PONumber = dataRow["PO Number"]?.ToString().Trim();
-                    string SKU = dataRow["Item Number"]?.ToString().Trim();
-                    string ItemQuantity = dataRow["QTY"]?.ToString().Trim();
-                    string UnitPrice = dataRow["Your Price"]?.ToString().Trim().Replace("$", "");
-                    string ItemExtendedPrice = dataRow["Ext Price"]?.ToString().Trim().Replace("$", "");
-                    //string InvoiceDate = dataRow["Order Date"]?.ToString();
-                    string Description = dataRow["Item Description"]?.ToString().Trim();
-                    string WholeSale = dataRow["Wholesale"]?.ToString().Trim().Replace("$", "");
-                    string DiscPercent = dataRow["Disc %"]?.ToString().Trim();
 
+                    i = i++;
+                    DateTime InvoiceDate;
+                    if (!string.IsNullOrEmpty(dataRow["Order Date"]?.ToString().Trim())
+                        && DateTime.TryParse(dataRow["Order Date"]?.ToString().Trim(),
+                        out InvoiceDate))
+                    {
+                        string InvoiceNumber = dataRow["Invoice Number"]?.ToString().Trim();
+                        string PONumber = dataRow["PO Number"]?.ToString().Trim();
 
-                    dt.Rows.Add(
-                        //Line
-                        i.ToString(),
-                        //Order Qty
-                        null,
-                        //Shipped Qty
-                        Convert.ToInt32(ItemQuantity),
-                        //Shipped Item
-                        SKU,
-                        //Pack Size
-                        "",
-                        //Brand
-                        "",
-                        //Description
-                        Description,
-                        // UPC Code
-                        "",
-                        //Retail
-                        Convert.ToDouble(UnitPrice),
-                        // Suggested Retail
-                        null,
-                        //Wholesale
-                        Convert.ToDouble(WholeSale),
-                        //Adj Wholesale - Received Unit Price
-                        Convert.ToDouble(UnitPrice),
-                        //Discount %
-                        Convert.ToDouble(DiscPercent),
-                        //Discount $
-                        null,
-                        //Net Each
-                        null,
-                        //Net Billable
-                        null,
-                        //UpCharges
-                        null,
-                        //BottleTax
-                        null,
-                        //Invoice No
-                        Convert.ToDouble(InvoiceNumber),
-                        //InvoiceDate
-                        Convert.ToDateTime(InvoiceDate),
-                        //Store No
-                        null,
-                        //SNO
-                        null);
+                        string ItemQuantity = dataRow["QTY"]?.ToString().Trim();
+                        string UnitPrice = dataRow["Your Price"]?.ToString().Trim().Replace("$", "");
+                        string ItemExtendedPrice = dataRow["Ext Price"]?.ToString().Trim().Replace("$", "");
+                        //string InvoiceDate = dataRow["Order Date"]?.ToString();
+                        string Description = dataRow["Item Description"]?.ToString().Trim();
+                        string WholeSale = dataRow["Wholesale"]?.ToString().Trim().Replace("$", "");
+                        string DiscPercent = dataRow["Disc %"]?.ToString().Trim();
+
+                        // Check if sheet has duplicate SKUs
+                        IEnumerable<DataRow> duplicateSKUs = from tbl in dtFromExcel.AsEnumerable()
+                                                             where tbl.Field<string>(3) == SKU
+                                                             select tbl;
+
+                        int Qty = Convert.ToInt32(ItemQuantity);
+                        double UP = Convert.ToDouble(UnitPrice);
+                        if (duplicateSKUs.Count() > 1)
+                        {
+                            for (int l = 1; l < duplicateSKUs.Count(); l++)
+                            {
+                                duplicateSKUList.Add(duplicateSKUs.ToList()[l]["Item Number"]?.ToString().Trim());
+                                Qty += Convert.ToInt32(duplicateSKUs.ToList()[l]["QTY"]);
+                            }                            
+                            UP = UP / Qty;
+                            duplicateSKUs = null;
+                        }
+
+                        dt.Rows.Add(
+                            //Line
+                            i.ToString(),
+                            //Order Qty
+                            null,
+                            //Shipped Qty
+                            Convert.ToInt32(ItemQuantity),
+                            //Shipped Item
+                            SKU,
+                            //Pack Size
+                            "",
+                            //Brand
+                            "",
+                            //Description
+                            Description,
+                            // UPC Code
+                            "",
+                            //Retail
+                            Convert.ToDouble(UP),
+                            // Suggested Retail
+                            null,
+                            //Wholesale
+                            Convert.ToDouble(WholeSale),
+                            //Adj Wholesale - Received Unit Price
+                            Convert.ToDouble(UP),
+                            //Discount %
+                            Convert.ToDouble(DiscPercent),
+                            //Discount $
+                            null,
+                            //Net Each
+                            null,
+                            //Net Billable
+                            null,
+                            //UpCharges
+                            null,
+                            //BottleTax
+                            null,
+                            //Invoice No
+                            Convert.ToDouble(InvoiceNumber),
+                            //InvoiceDate
+                            Convert.ToDateTime(InvoiceDate),
+                            //Store No
+                            null,
+                            //SNO
+                            null);
+                    }
+
                 }
             }
             return dt;
