@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -243,6 +244,10 @@ namespace E_InvoiceSolution.Dapper
             {
                 dtFromExcel = ReadExcelFile(path);
             }
+            if (path.EndsWith(".csv"))
+            {
+                dtFromExcel = ReadCsvFile(path);
+            }
             else
             {
                 dtFromExcel = ReadExcelFileWithClosedXML(path);
@@ -251,15 +256,17 @@ namespace E_InvoiceSolution.Dapper
             foreach (DataRow dataRow in dtFromExcel.Rows)
             {
                 i = i++;
-                string InvoiceNumber = dataRow["Invoice/Transaction Number"]?.ToString().Trim();
-                string PONumber = dataRow["PO#"]?.ToString().Trim();
-                string SKU = dataRow["Item Number"]?.ToString().Trim();
-                string ItemQuantity = dataRow["Item Quantity"]?.ToString().Trim();
-                string UnitPrice = dataRow["Item Price Unit"]?.ToString().Trim();
-                string ItemExtendedPrice = dataRow["Item Extended Price"]?.ToString().Trim();
-                string InvoiceDate = dataRow["Invoice Date"]?.ToString().Trim();
-                string Description = dataRow["Item Description"]?.ToString().Trim();
-                string UPC = dataRow["NDC/UPC value"]?.ToString().Trim();
+                string InvoiceNumber = dataRow["InvoiceNumber"]?.ToString().Trim();
+                //string PONumber = dataRow["PO#"]?.ToString().Trim();
+                string SKU = dataRow["OrderItemNumber"]?.ToString().Trim();
+                string ItemQuantity = dataRow["FilledQuantity"]?.ToString().Trim();
+                string UnitPrice = dataRow["FilledUnitPrice"]?.ToString().Trim();
+                //string ItemExtendedPrice = dataRow["Item Extended Price"]?.ToString().Trim();
+                //string InvoiceDate = dataRow["InvoiceDate"]?.ToString().Trim();
+                string Description = dataRow["SellDescription"]?.ToString().Trim();
+                //string UPC = dataRow["NDC/UPC value"]?.ToString().Trim();
+                string Wholesale = dataRow["ProperContractPrice"]?.ToString().Trim();
+                string MSRP = dataRow["RetailPrice"]?.ToString().Trim();
 
                 dt.Rows.Add(
                         //Line
@@ -281,11 +288,11 @@ namespace E_InvoiceSolution.Dapper
                         //Retail
                         Convert.ToDouble(UnitPrice),
                         // Suggested Retail
-                        null,
+                        Convert.ToDouble(MSRP),
                         //Wholesale
-                        Convert.ToDouble(UnitPrice),
+                        Convert.ToDouble(Wholesale),
                         //Adj Wholesale
-                        null,
+                        Convert.ToDouble(UnitPrice),
                         //Discount %
                         null,
                         //Discount $
@@ -301,37 +308,11 @@ namespace E_InvoiceSolution.Dapper
                         //Invoice No
                         Convert.ToDouble(InvoiceNumber),
                         //InvoiceDate
-                        Convert.ToDateTime(InvoiceDate),
+                        null, //Convert.ToDateTime(InvoiceDate),
                         //Store No
                         null,
                         //SNO
                         null);
-
-                dt.Rows.Add(
-                    //Line
-                    i.ToString(),
-                    //
-                    null,
-                    Convert.ToInt32(ItemQuantity),
-                    SKU,
-                    "",
-                    "",
-                    Description,
-                    UPC,
-                    Convert.ToDouble(UnitPrice),
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    Convert.ToDouble(InvoiceNumber),
-                    Convert.ToDateTime(InvoiceDate),
-                    null,
-                    null);
             }
 
             return dt;
@@ -410,6 +391,50 @@ namespace E_InvoiceSolution.Dapper
                 }
             }
             return dt;
+        }
+
+        public static DataTable ReadCsvFile(string path)
+        {
+
+            DataTable dtCsv = new DataTable();
+            string Fulltext;
+            using (StreamReader sr = new StreamReader(path))
+            {
+                while (!sr.EndOfStream)
+                {
+                    Fulltext = sr.ReadToEnd().ToString(); //read full file text  
+                    string[] rows = Fulltext.Split('\n'); //split full file text into rows  
+                    for (int i = 0; i < rows.Count() - 1; i++)
+                    {
+                        string[] rowValues = rows[i].Split(','); //split each row with comma to get individual values  
+                        {
+                            if (i == 0)
+                            {
+                                //add headers  
+                                for (int j = 0; j < rowValues.Count(); j++)
+                                {
+                                    if (dtCsv.Columns.Contains(rowValues[j]))
+                                    {
+                                        dtCsv.Columns.Add(rowValues[j] + j);
+                                    }
+                                    else { dtCsv.Columns.Add(rowValues[j]); }
+                                }
+                            }
+                            else
+                            {
+                                DataRow dr = dtCsv.NewRow();
+                                for (int k = 0; k < rowValues.Count(); k++)
+                                {
+                                    dr[k] = rowValues[k].ToString();
+                                }
+                                dtCsv.Rows.Add(dr); //add other rows  
+                            }
+                        }
+                    }
+                }
+            }
+
+            return dtCsv;
         }
 
         private static DataTable CreateBlankDataSet()

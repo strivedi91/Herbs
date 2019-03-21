@@ -1,0 +1,219 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr class="tblHead">
+                        <td align="Center">Step</td>
+                        <td align="Center">Task</td>
+                        <td align="Center">No of Rows Affected</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1.1</td><td>Rows Deleted From Daily PO Table</td><td align="Right">12</td></tr>
+                    <tr></tr>
+                    <tr><td>1.2</td><td>Total Rows in Excel Sheet:</td><td align="Right">12</td></tr>
+                    <tr><td></td></tr>
+                    <tr><td>1.4</td><td>Rows Imported From File :D:\Adm_site\taskfiles5\NaturesBestPOFiles\2019\January\Kehe.xls</td><td align="Right"> </td></tr>
+                    <tr><td>1.5</td><td>Deleted from the main Natures best supporting table </td><td align="Right">12 </td></tr></tr>
+                    <tr><td>1.6</td><td>Update the pocode </td></tr>
+                    <tr><td>3.1</td><td>Total SKUs found in tblPurchaseOrderDetails for the POID:121583</td><td align="Right">5</td></tr>
+                    <tr><td></td><td>Total Quantity found in tblPurchaseOrderDetails for the POID:121583</td><td align="Right">6</td></tr>
+                    <tr><td>3.2</td><td>Total SKUs received:</td><td align="Right">12</td></tr>
+                    <tr><td></td><td>Total Quantity received:</td><td align="Right">12</td></tr>
+                </tbody>
+            </table>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td colspan="6" align="Left">
+                            <h3>Purchase Order Details</h3>
+                        </td>
+                    </tr>
+                    <tr class="tblHead">
+                        <td align="center">POID</td>
+                        <td align="center">POCode</td>
+                        <td align="center">Invoice Number</td>
+                        <td align="center">Products Count</td>
+                        <td align="center">PO Quantity</td>
+                        <td align="center">PO Amount</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                        <tr>
+                            <td align="center">121583</td>
+                            <td align="center">5103320192335</td>
+                            <td align="center">7119269888</td>
+                            <td align="center">5</td>
+                            <td align="center">6</td>
+                            <td align="center">10.5500</td>
+                        </tr>
+
+                </tbody>
+            </table>
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="4"><h3>Extra Shipped</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">SKU</td>
+                            <td align="Center">Ordered Quantity</td>
+                            <td align="Center">Shipped Quantity</td>
+                            <td align="Center">Received Unit Cost</td>
+                            <td align="Center">Invoice Number</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td align="center">1304351</td>
+                                <td align="center">1</td>
+                                <td align="center">2</td>
+                                <td align="center">0</td>
+                                <td align="center">7119269888</td>
+                            </tr>
+                            <tr>
+                                <td align="center">1304351</td>
+                                <td align="center">1</td>
+                                <td align="center">2</td>
+                                <td align="center">0</td>
+                                <td align="center">7119269888</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="center">2082097</td>
+                                <td align="center"></td>
+                                <td align="center">1</td>
+                                <td align="center">0</td>
+                                <td align="center">7119269888</td>
+                            </tr>
+                            <tr>
+                                <td align="center">2082097</td>
+                                <td align="center"></td>
+                                <td align="center">1</td>
+                                <td align="center">0</td>
+                                <td align="center">7119269888</td>
+                            </tr>
+
+                    </tbody>
+                </table>
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="7"><h3>Credit Report</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">POID</td>
+                            <td align="Center">SKU</td>
+                            <td align="Center">Quantity</td>
+                            <td align="Center">Product Name</td>
+                            <td align="Center">Invoice Number</td>
+                            <td align="Center">Reason for credit</td>
+                            <td align="Center">Amount to be Credited</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td align="center">121583</td>
+                                <td align="center">1232727</td>
+                                <td align="center">1</td>
+                                <td align="center">Colgate Toothpaste Spongebob Mild bubble fruit 4.6 oz 035000782175</td>
+                                <td align="center">7119269888</td>
+                                <td align="center">
+
+
+                                </td>
+                                <td align="center">$0</td>
+                            </tr>
+                            <tr>
+                                <td align="center">121583</td>
+                                <td align="center">1304351</td>
+                                <td align="center">2</td>
+                                <td align="center">Reach Dentotape Floss Waxed Unflavored 100 Yards each 381370092216</td>
+                                <td align="center">7119269888</td>
+                                <td align="center">
+
+
+                                </td>
+                                <td align="center">$0</td>
+                            </tr>
+                            <tr>
+                                <td align="center">121583</td>
+                                <td align="center">2264315</td>
+                                <td align="center">1</td>
+                                <td align="center">Sunmark 100% Lambs Wool Padding 0.375 oz 010939042330</td>
+                                <td align="center">7119269888</td>
+                                <td align="center">
+
+
+                                </td>
+                                <td align="center">$0</td>
+                            </tr>
+                            <tr>
+                                <td align="center">121583</td>
+                                <td align="center">1996057</td>
+                                <td align="center">0</td>
+                                <td align="center">Sunmark Easy Grip Nail Clipper 1 each 010939420442</td>
+                                <td align="center">7119269888</td>
+                                <td align="center">
+
+
+                                </td>
+                                <td align="center">$0</td>
+                            </tr>
+                            <tr>
+                                <td align="center">121583</td>
+                                <td align="center">1996412</td>
+                                <td align="center">1</td>
+                                <td align="center">Sunmark Easy Grip Toenail Clipper 1 each(Out of Stock) 010939419446</td>
+                                <td align="center">7119269888</td>
+                                <td align="center">
+
+
+                                </td>
+                                <td align="center">$0</td>
+                            </tr>
+
+
+                    </tbody>
+                </table>
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="6"><h3>Ordered But Not Received</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">ProductTypeID</td>
+                            <td align="Center">SKU</td>
+                            <td align="Center">Quantity</td>
+                            <td align="Center">Received Quantity</td>
+                            <td align="Center">Actual Unit Cost</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td align="center">99413</td>
+                                <td align="center">2264315</td>
+                                <td align="center">2</td>
+                                <td align="center">1</td>
+                                <td align="center">1.8400</td>
+                            </tr>
+
+
+                    </tbody>
+                </table>
+
+
+
+            <div>
+                <a href="/Home/Download" download>Download</a>
+            </div>
+
+        </div>
+    </div>
+</div>
