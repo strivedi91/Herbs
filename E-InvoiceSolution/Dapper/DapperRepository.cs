@@ -354,15 +354,15 @@ namespace E_InvoiceSolution.Dapper
                                                              select tbl;
 
                         int Qty = Convert.ToInt32(ItemQuantity);
-                        double UP = Convert.ToDouble(UnitPrice);
+                        double extendedPrice = Convert.ToDouble(ItemExtendedPrice);
                         if (duplicateSKUs.Count() > 1)
                         {
                             for (int l = 1; l < duplicateSKUs.Count(); l++)
                             {
                                 duplicateSKUList.Add(duplicateSKUs.ToList()[l]["Item Number"]?.ToString().Trim());
                                 Qty += Convert.ToInt32(duplicateSKUs.ToList()[l]["QTY"]);
-                            }                            
-                            UP = UP / Qty;
+                            }
+                            UnitPrice = (extendedPrice / Qty).ToString();
                             duplicateSKUs = null;
                         }
 
@@ -384,13 +384,13 @@ namespace E_InvoiceSolution.Dapper
                             // UPC Code
                             "",
                             //Retail
-                            Convert.ToDouble(UP),
+                            Convert.ToDouble(UnitPrice),
                             // Suggested Retail
                             null,
                             //Wholesale
                             Convert.ToDouble(WholeSale),
                             //Adj Wholesale - Received Unit Price
-                            Convert.ToDouble(UP),
+                            Convert.ToDouble(UnitPrice),
                             //Discount %
                             Convert.ToDouble(DiscPercent),
                             //Discount $
