@@ -1,2 +1,7 @@
 03-03-2019
 usp_NaturesBestPOUpdate
+
+29-03-2019
+
+ALTER TABLE tblNaturesBestinvoices
+ALTER COLUMN [InvoiceNumber]  decimal(18);

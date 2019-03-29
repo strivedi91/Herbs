@@ -130,37 +130,33 @@
                         {
                             if (Math.Round(item.DiffinUnitCost * item.receivedqty, 2) < -0.2 && item.receivedqty > 0)
                             {
+                                double ActualDiscount = Math.Round((item.actualwholesale - item.actualunitcost) / item.actualwholesale * 100);
+                                double RecievedDiscount = Math.Round((item.receivedwholesale - item.receivedunitcost) / item.receivedwholesale * 100);
 
+                                <tr>
+                                    <td align="center">@Model.POID</td>
+                                    <td align="center">@item.sku</td>
+                                    <td align="center">@item.receivedqty</td>
+                                    <td align="center">@item.product</td>
+                                    <td align="center">@Model.PurchaseOrderDetails.FirstOrDefault().InvoiceNumber</td>
+                                    <td align="center">
 
+                                        @if (ActualDiscount - RecievedDiscount > 0)
+                                        {
+                                            <span>Actual Discount is  @ActualDiscount % --Received Discount is @RecievedDiscount</span>
+                                        }
+
+                                        @if (item.receivedunitcost > item.actualunitcost)
+                                        {
+                                            <span>
+                                                Actual Unit Cost is @item.actualunitcost  -- Received unit cost is @item.receivedunitcost
+                                            </span>
+                                        }
+                                    </td>
+                                    <td align="center">$@Math.Round(item.DiffinUnitCost * item.receivedqty, 2)</td>
+                                </tr>
                             }
-                            double ActualDiscount = Math.Round((item.actualwholesale - item.actualunitcost) / item.actualwholesale * 100);
-                            double RecievedDiscount = Math.Round((item.receivedwholesale - item.receivedunitcost) / item.receivedwholesale * 100);
-
-                            <tr>
-                                <td align="center">@Model.POID</td>
-                                <td align="center">@item.sku</td>
-                                <td align="center">@item.receivedqty</td>
-                                <td align="center">@item.product</td>
-                                <td align="center">@Model.PurchaseOrderDetails.FirstOrDefault().InvoiceNumber</td>
-                                <td align="center">
-
-                                    @if (ActualDiscount - RecievedDiscount > 0)
-                                    {
-                                        <span>Actual Discount is  @ActualDiscount % --Received Discount is @RecievedDiscount</span>
-                                    }
-
-                                    @if (item.receivedunitcost > item.actualunitcost)
-                                    {
-                                        <span>
-                                            Actual Unit Cost is @item.actualunitcost  -- Received unit cost is @item.receivedunitcost
-                                        </span>
-                                    }
-                                </td>
-                                <td align="center">$@Math.Round(item.DiffinUnitCost * item.receivedqty, 2)</td>
-                            </tr>
                         }
-
-
                     </tbody>
                 </table>
 

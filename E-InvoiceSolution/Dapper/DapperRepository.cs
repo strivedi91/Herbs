@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -240,11 +241,11 @@ namespace E_InvoiceSolution.Dapper
             int i = 0;
 
             DataTable dtFromExcel;
-            if (path.EndsWith(".xls"))
+            if (path.ToLower().EndsWith(".xls"))
             {
                 dtFromExcel = ReadExcelFile(path);
             }
-            if (path.EndsWith(".csv"))
+            if (path.ToLower().EndsWith(".csv"))
             {
                 dtFromExcel = ReadCsvFile(path);
             }
@@ -267,7 +268,7 @@ namespace E_InvoiceSolution.Dapper
                 //string UPC = dataRow["NDC/UPC value"]?.ToString().Trim();
                 string Wholesale = dataRow["ProperContractPrice"]?.ToString().Trim();
                 string MSRP = dataRow["RetailPrice"]?.ToString().Trim();
-
+                
                 dt.Rows.Add(
                         //Line
                         i.ToString(),
@@ -495,7 +496,7 @@ namespace E_InvoiceSolution.Dapper
             dt.Columns.Add(new DataColumn("BottleTax", typeof(float)));
 
 
-            dt.Columns.Add(new DataColumn("Invoice No", typeof(float)));
+            dt.Columns.Add(new DataColumn("Invoice No", typeof(decimal)));
             dt.Columns.Add(new DataColumn("InvoiceDate", typeof(DateTime)));
 
             dt.Columns.Add(new DataColumn("Store No", typeof(int)));
