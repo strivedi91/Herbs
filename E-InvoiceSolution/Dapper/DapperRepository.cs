@@ -373,7 +373,7 @@ namespace E_InvoiceSolution.Dapper
                             //Order Qty
                             null,
                             //Shipped Qty
-                            Convert.ToInt32(ItemQuantity),
+                            Convert.ToInt32(Qty),
                             //Shipped Item
                             SKU,
                             //Pack Size
