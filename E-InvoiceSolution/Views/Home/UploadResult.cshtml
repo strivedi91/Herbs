@@ -24,7 +24,7 @@
                         <tr><td>1.3</td><td>Repeated SKU were Found in Excel are:</td><td>No Repeated SKUs</td></tr>
                     }
                     <tr><td></td></tr>
-                    <tr><td>1.4</td><td>Rows Imported From File :D:\Adm_site\taskfiles5\NaturesBestPOFiles\2019\January\Kehe.xls</td><td align="Right">@Model.RowsImportedFromExcelSheet </td></tr>
+                    <tr><td>1.4</td><td>Rows Imported From File : @Model.DownloadFileName </td><td align="Right">@Model.RowsImportedFromExcelSheet </td></tr>
                     <tr><td>1.5</td><td>Deleted from the main Natures best supporting table </td><td align="Right">@Model.RowsDeltedFromNaturesBestSupportingTable </td></tr></tr>
                     <tr><td>1.6</td><td>Update the pocode </td></tr>
                     <tr><td>3.1</td><td>Total SKUs found in tblPurchaseOrderDetails for the POID:@Model.POID</td><td align="Right">@Model.SkusFoundIntblPurchaseOrderDetailsForPOID</td></tr>
@@ -94,6 +94,35 @@
                         }
 
 
+                        @foreach (var item in Model.ShippedButNotOrdered)
+                        {
+                            <tr>
+                                <td align="center">@item.SKU</td>
+                                <td align="center">@item.OrderedQty</td>
+                                <td align="center">@item.ShippedQty</td>
+                                <td align="center">@item.WholesalePrice</td>
+                                <td align="center">@item.InvoiceNumber</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            }
+
+            @if (Model.ShippedButNotOrdered.Count > 0)
+            {
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="4"><h3>Shipped But Not Ordered</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">SKU</td>
+                            <td align="Center">Ordered Quantity</td>
+                            <td align="Center">Shipped Quantity</td>
+                            <td align="Center">Received Unit Cost</td>
+                            <td align="Center">Invoice Number</td>
+                        </tr>
+                    </thead>
+                    <tbody>
                         @foreach (var item in Model.ShippedButNotOrdered)
                         {
                             <tr>
