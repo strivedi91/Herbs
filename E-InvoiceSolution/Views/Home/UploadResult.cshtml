@@ -92,19 +92,7 @@
                                 <td align="center">@item.InvoiceNumber</td>
                             </tr>
                         }
-
-
-                        @foreach (var item in Model.ShippedButNotOrdered)
-                        {
-                            <tr>
-                                <td align="center">@item.SKU</td>
-                                <td align="center">@item.OrderedQty</td>
-                                <td align="center">@item.ShippedQty</td>
-                                <td align="center">@item.WholesalePrice</td>
-                                <td align="center">@item.InvoiceNumber</td>
-                            </tr>
-                        }
-
+                       
                     </tbody>
                 </table>
             }

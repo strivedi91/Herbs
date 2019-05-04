@@ -1,0 +1,166 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr class="tblHead">
+                        <td align="Center">Step</td>
+                        <td align="Center">Task</td>
+                        <td align="Center">No of Rows Affected</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1.1</td><td>Rows Deleted From Daily PO Table</td><td align="Right">10</td></tr>
+                    <tr></tr>
+                    <tr><td>1.2</td><td>Total Rows in Excel Sheet:</td><td align="Right">7</td></tr>
+                        <tr><td>1.3</td><td>Repeated SKU were Found in Excel are:</td><td>No Repeated SKUs</td></tr>
+                    <tr><td></td></tr>
+                    <tr><td>1.4</td><td>Rows Imported From File :  </td><td align="Right"> </td></tr>
+                    <tr><td>1.5</td><td>Deleted from the main Natures best supporting table </td><td align="Right">7 </td></tr></tr>
+                    <tr><td>1.6</td><td>Update the pocode </td></tr>
+                    <tr><td>3.1</td><td>Total SKUs found in tblPurchaseOrderDetails for the POID:123017</td><td align="Right">7</td></tr>
+                    <tr><td></td><td>Total Quantity found in tblPurchaseOrderDetails for the POID:123017</td><td align="Right">16</td></tr>
+                    <tr><td>3.2</td><td>Total SKUs received:</td><td align="Right">7</td></tr>
+                    <tr><td></td><td>Total Quantity received:</td><td align="Right">13</td></tr>
+                </tbody>
+            </table>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td colspan="6" align="Left">
+                            <h3>Purchase Order Details</h3>
+                        </td>
+                    </tr>
+                    <tr class="tblHead">
+                        <td align="center">POID</td>
+                        <td align="center">POCode</td>
+                        <td align="center">Invoice Number</td>
+                        <td align="center">Products Count</td>
+                        <td align="center">PO Quantity</td>
+                        <td align="center">PO Amount</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                        <tr>
+                            <td align="center">123017</td>
+                            <td align="center">5104102019237</td>
+                            <td align="center">7123895732,7126629496</td>
+                            <td align="center">7</td>
+                            <td align="center">16</td>
+                            <td align="center">68.3500</td>
+                        </tr>
+
+                </tbody>
+            </table>
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="4"><h3>Extra Shipped</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">SKU</td>
+                            <td align="Center">Ordered Quantity</td>
+                            <td align="Center">Shipped Quantity</td>
+                            <td align="Center">Received Unit Cost</td>
+                            <td align="Center">Invoice Number</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td align="center">1335603</td>
+                                <td align="center">4</td>
+                                <td align="center">5</td>
+                                <td align="center">3.2000</td>
+                                <td align="center">7123895732</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="center">3226834</td>
+                                <td align="center"></td>
+                                <td align="center">1</td>
+                                <td align="center">4.4300</td>
+                                <td align="center">7123895732</td>
+                            </tr>
+
+                    </tbody>
+                </table>
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="7"><h3>Credit Report</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">POID</td>
+                            <td align="Center">SKU</td>
+                            <td align="Center">Quantity</td>
+                            <td align="Center">Product Name</td>
+                            <td align="Center">Invoice Number</td>
+                            <td align="Center">Reason for credit</td>
+                            <td align="Center">Amount to be Credited</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                                <tr>
+                                    <td align="center">123017</td>
+                                    <td align="center">2530848</td>
+                                    <td align="center">1</td>
+                                    <td align="center">Parabath Universal Paraffin Refill 6 each 087453241303</td>
+                                    <td align="center">7123895732,7126629496</td>
+                                    <td align="center">
+
+
+                                            <span>
+                                                Actual Unit Cost is 19.13  -- Received unit cost is 20
+                                            </span>
+                                    </td>
+                                    <td align="center">$-0.87</td>
+                                </tr>
+                    </tbody>
+                </table>
+
+                <table class="table">
+                    <thead>
+                        <tr><td colspan="6"><h3>Ordered But Not Received</h3></td></tr>
+                        <tr class="tblHead">
+                            <td align="Center">ProductTypeID</td>
+                            <td align="Center">SKU</td>
+                            <td align="Center">Quantity</td>
+                            <td align="Center">Received Quantity</td>
+                            <td align="Center">Actual Unit Cost</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td align="center">113935</td>
+                                <td align="center">1852094</td>
+                                <td align="center">4</td>
+                                <td align="center">2</td>
+                                <td align="center">4.4500</td>
+                            </tr>
+                            <tr>
+                                <td align="center">103810</td>
+                                <td align="center">2539328</td>
+                                <td align="center">1</td>
+                                <td align="center">0</td>
+                                <td align="center">1.8600</td>
+                            </tr>
+
+
+                    </tbody>
+                </table>
+
+
+
+            <div>
+                <a href="/Home/Download" download>Download</a>
+            </div>
+
+        </div>
+    </div>
+</div>

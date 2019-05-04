@@ -2,6 +2,7 @@
 using E_InvoiceSolution.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +15,14 @@ namespace E_InvoiceSolution.Controllers
     {
         public async Task<ActionResult> Index()
         {
+            if (string.IsNullOrEmpty(Convert.ToString(Session["UserId"])))
+            {
+                if (Convert.ToString(ConfigurationManager.AppSettings["EnableDebug"]) == "true")
+                    Response.Redirect(Convert.ToString(ConfigurationManager.AppSettings["LocalHostPort"]) + "/default.asp?out=1&return=" + Convert.ToString(Request.Url));
+                else
+                    Response.Redirect("/default.asp?out=1");
+            }
+
             ViewBag.DistributorsList = new SelectList(await DapperRepository.GetDistributorsList(), "Distributorid", "Distributorname");
             return View();
         }

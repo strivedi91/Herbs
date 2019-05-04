@@ -158,6 +158,14 @@
     <Compile Include="Models\KeheUploadResultModel.cs" />
     <Compile Include="Models\OutStandingPoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionTransfer.aspx.cs">
+      <DependentUpon>SessionTransfer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SessionTransferForm.aspx.cs">
+      <DependentUpon>SessionTransferForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ChangeLog.txt" />
@@ -256,6 +264,8 @@
     <Content Include="Scripts\tests\visual\tooltip.html" />
     <Content Include="Scripts\tooltip.js" />
     <Content Include="Scripts\transition.js" />
+    <Content Include="SessionTransfer.aspx" />
+    <Content Include="SessionTransferForm.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
